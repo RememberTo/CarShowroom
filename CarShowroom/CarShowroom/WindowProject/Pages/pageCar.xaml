@@ -1,0 +1,48 @@
+﻿<Page x:Class="CarShowroomSystem.Window.Pages.pageCar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarShowroomSystem.Window.Pages"
+      mc:Ignorable="d"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:amazing="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      TextElement.Foreground="{DynamicResource MaterialDesignFlatButtonRipple}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignToolBackground}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Title="Автомобили"  Width="1355" Height="830"
+ >
+    
+    
+    <Grid Margin="0,0,-0.286,0.647">
+
+
+        <DataGrid
+            Style="{StaticResource MaterialDesignDataGrid}"
+            x:Name="GridDatabase" Margin="0,0,216,0"
+
+            AutoGenerateColumns="False"
+            SelectionMode="Single" RowBackground="#FFFBF7FF" BorderBrush="#1F606060" 
+            AlternatingRowBackground="{DynamicResource MaterialDesignDataGridRowHoverBackground}" 
+            Cursor="Hand" FontSize="14" MouseDoubleClick="GridDatabase_MouseDoubleClick"
+            >
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn Header="VIN" Binding="{Binding Path = _Vin,Mode=OneWay }"  Width="160"/>
+                <materialDesign:DataGridTextColumn Header="Производитель" Binding="{Binding Path =  _manufacturer, Mode=OneWay}" Width="140"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path =  _model, Mode=OneWay}" Width="110"/>
+                <DataGridTextColumn Header="Комплектация" Binding="{Binding Path =  _equipment, Mode=OneWay}" Width="130"/>
+                <DataGridTextColumn Header="Дата выпуска" Binding="{Binding Path =  _releaseDate, Mode=OneWay}" Width="125"/>
+                <DataGridTextColumn Header="Тип топлива" Binding="{Binding Path =  _fuel, Mode=OneWay}" Width="120"/>
+                <DataGridTextColumn Header="Тип привода" Binding="{Binding Path =  _drive, Mode=OneWay}" Width="120"/>
+                <DataGridTextColumn Header="Цвет" Binding="{Binding Path =  _color, Mode=OneWay}" Width="100"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Path =  _price, Mode=OneWay}" Width="160"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Page>
