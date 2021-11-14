@@ -15,8 +15,8 @@
                 Background="{DynamicResource PrimaryHueDarkBrush}"
                 HorizontalAlignment="Left" Margin="252,167,0,0" VerticalAlignment="Top" 
                 Width="92" Cursor="Hand"  Height="27" Click="button_getPrice_Click" Foreground="White" />
-        <Label
+        <TextBlock
             x:Name="lblString"
-            Content="Ошибка! " HorizontalAlignment="Left" Margin="64,43,0,0" VerticalAlignment="Top" Height="68" Width="296" Foreground="#DDFFFFFF"/>
+            Text="Ошибка! " TextWrapping="Wrap" HorizontalAlignment="Left" Margin="64,35,0,0" VerticalAlignment="Top" Height="105" Width="264" Foreground="#DDFFFFFF"/>
     </Grid>
 </Window>

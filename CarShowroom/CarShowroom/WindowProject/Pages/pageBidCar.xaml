@@ -15,14 +15,207 @@
          FontFamily="{DynamicResource MaterialDesignFont}"
         
         
-        Title="Заявки"  Width="1355" Height="830"
- >
+        Title="Заявки"  Width="1355" Height="830">
+
+    <Page.Resources>
+        <ContextMenu x:Key="lwMenu" Style="{StaticResource MaterialDesignContextMenu}">
+            <ContextMenu.Items>
+                <MenuItem FontSize="15" Header="Удалить" Click="MenuItem_Click"/>
+            </ContextMenu.Items>
+        </ContextMenu>
+        <Style  x:Key="MyItemContainerStyle" TargetType="{x:Type ListViewItem}">
+            <Setter Property="ContextMenu" Value="{StaticResource lwMenu}" />
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+
+        <ContextMenu x:Key="lMenu" Style="{StaticResource MaterialDesignContextMenu}">
+            <ContextMenu.Items>
+                <MenuItem FontSize="15" Header="Удалить" Click="MenuItem_Click_1"/>
+            </ContextMenu.Items>
+        </ContextMenu>
+        <Style  x:Key="MyItemConStyle" TargetType="{x:Type ListViewItem}">
+            <Setter Property="ContextMenu" Value="{StaticResource lMenu}" />
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+
+
     <Grid Margin="0,0,-0.286,0.647">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+
+
+        <Grid  HorizontalAlignment="Center" Height="62" Margin="0,771,0,0" VerticalAlignment="Top" Width="1355" Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"/>
+        <Rectangle HorizontalAlignment="Left" Height="673" Margin="8,93,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="683"/>
+        <Rectangle HorizontalAlignment="Left" Height="144" Margin="8,622,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="683"/>
+
+        <Rectangle HorizontalAlignment="Left" Height="144" Margin="714,622,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="631"/>
+        <Rectangle HorizontalAlignment="Left" Height="673" Margin="714,93,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="631"/>
+
+
+        <ListView ItemContainerStyle="{StaticResource MyItemContainerStyle}" x:Name="listViewCar" Margin="10,95,667,212" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="LeftToRight" Padding="3,0,0,0">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="180" Header="Производитель" DisplayMemberBinding="{Binding Manufacturer}"/>
+                    <GridViewColumn Width="180" Header="Модель" DisplayMemberBinding="{Binding Model}"/>
+                    <GridViewColumn Width="180" Header="Комлпектация" DisplayMemberBinding="{Binding Equipment}"/>
+                    <GridViewColumn Width="180" Header="Количество" DisplayMemberBinding="{Binding Amount}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView ItemContainerStyle="{StaticResource MyItemConStyle}" x:Name="listViewAccessory" Margin="717,95,12,209">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="130" Header="Тип" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Width="170" Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Width="180" Header="Описание" DisplayMemberBinding="{Binding Opis}"/>
+                    <GridViewColumn Width="140" Header="Количество" DisplayMemberBinding="{Binding Amount}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Автомобили" FontSize="20" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="40" Width="678"/>
+        <Label Content="Аксессуары" FontSize="20" HorizontalAlignment="Left" Margin="717,55,0,0" VerticalAlignment="Top" Width="628" HorizontalContentAlignment="Center" Height="40"/>
+
+
+
+
+        <Button Content="Добавить автомобиль" 
+                x:Name="button_AddCar"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="35,785,0,0" VerticalAlignment="Top" 
+                Width="180" Cursor="Hand"  Height="34" Click="button_AddCar_Click"/>
+
+        <Button Content="Удалить автомобили" 
+                x:Name="button_DeleteCar"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="267,785,0,0" VerticalAlignment="Top" 
+                Width="180" Cursor="Hand"  Height="34" Click="button_DeleteCar_Click"/>
+
+        <Button Content="Добавить аксессуар" 
+                x:Name="button_AddAccessory"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="1142,785,0,0" VerticalAlignment="Top" 
+                Width="180" Cursor="Hand"  Height="34" Click="button_AddAccessory_Click"/>
+
+        <Button Content="Удалить аксессуары" 
+                x:Name="button_DeleteAccessory"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="914,785,0,0" VerticalAlignment="Top" 
+                Width="171" Cursor="Hand"  Height="34" Click="button_DeleteAccessory_Click"/>
+
+        <Button Content="Сформировать накладную" 
+                x:Name="button_Word"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Center" Margin="0,785,0,0" VerticalAlignment="Top" 
+                Width="209" Cursor="Hand"  Height="34" Click="button_Word_Click"/>
+
+
+
+        <TextBox 
+            x:Name="TextBoxOpis"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1075,652,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="37" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+
+        <TextBox 
+            x:Name="TextBox_Type"
+            HorizontalAlignment="Left" 
+           Margin="733,633,0,0"   Height="44"
+            VerticalAlignment="Top" Width="234"
+            materialDesign:HintAssist.Hint="Тип"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            FontSize="15" 
+            CaretBrush="#FF39505D"
+            Foreground="{DynamicResource MaterialDesignBody}" 
+            BorderBrush="{DynamicResource MaterialDesignToolForeground}" SelectionBrush="#FF8BB1CE" Cursor="Hand"
+            />
+        <TextBox 
+            x:Name="TextBox_Name"
+            HorizontalAlignment="Left" 
+           Margin="733,709,0,0"   Height="44"
+            VerticalAlignment="Top" Width="234"
+            materialDesign:HintAssist.Hint="Наименование"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            FontSize="15" 
+            CaretBrush="#FF39505D"
+            Foreground="{DynamicResource MaterialDesignBody}" 
+            BorderBrush="{DynamicResource MaterialDesignToolForeground}" SelectionBrush="#FF8BB1CE" Cursor="Hand"
+            />
+        <Label FontSize="15" Foreground="{DynamicResource MaterialDesignToolTipBackground}" Content="Описание" HorizontalAlignment="Left" Margin="1074,628,0,0" VerticalAlignment="Top" Width="110" Height="24" RenderTransformOrigin="0.366,0.613" />
+
+
+
+
+        <TextBox 
+            x:Name="TextBox_Manufacturer"
+            HorizontalAlignment="Left" 
+           Margin="20,633,0,0"   Height="44"
+            VerticalAlignment="Top" Width="242"
+            materialDesign:HintAssist.Hint="Производитель"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            FontSize="15" 
+            CaretBrush="#FF39505D"
+            Foreground="{DynamicResource MaterialDesignBody}" 
+            BorderBrush="{DynamicResource MaterialDesignToolForeground}" SelectionBrush="#FF8BB1CE" Cursor="Hand"
+            />
+        <TextBox 
+            x:Name="TextBox_Model"
+            HorizontalAlignment="Left" 
+           Margin="20,709,0,0"   Height="44"
+            VerticalAlignment="Top" Width="242"
+            materialDesign:HintAssist.Hint="Модель"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            FontSize="15" 
+            CaretBrush="#FF39505D"
+            Foreground="{DynamicResource MaterialDesignBody}" 
+            BorderBrush="{DynamicResource MaterialDesignToolForeground}" SelectionBrush="#FF8BB1CE" Cursor="Hand"
+            />
+        <TextBox 
+            x:Name="TextBox_Equipment"
+            HorizontalAlignment="Left" 
+           Margin="407,633,0,0"   Height="44"
+            VerticalAlignment="Top" Width="242"
+            materialDesign:HintAssist.Hint="Комплектация"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            FontSize="15" 
+            CaretBrush="#FF39505D"
+            Foreground="{DynamicResource MaterialDesignBody}" 
+            BorderBrush="{DynamicResource MaterialDesignToolForeground}" SelectionBrush="#FF8BB1CE" Cursor="Hand"
+            />
+
+        <Label FontSize="15" Foreground="{DynamicResource MaterialDesignToolTipBackground}" Content="Количество :" HorizontalAlignment="Left" Margin="399,722,0,0" VerticalAlignment="Top" Width="100" Height="31" RenderTransformOrigin="0.474,0.599" />
+
+        <TextBox 
+            x:Name="TextBox_Amount"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="499,722,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="150"  BorderThickness="1,1,1,1" Height="28" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" PreviewTextInput="TextBox_Amount_PreviewTextInput"/>
+        <Label FontSize="15" Foreground="{DynamicResource MaterialDesignToolTipBackground}" Content="Количество :" HorizontalAlignment="Left" Margin="1079,722,0,0" VerticalAlignment="Top" Width="100" Height="31" />
+
+
+        <TextBox 
+            x:Name="TextBox_AmountA"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1179,722,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="150"  BorderThickness="1,1,1,1" Height="28" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" PreviewTextInput="TextBox_AmountA_PreviewTextInput"/>
+
+
+
+
     </Grid>
 </Page>

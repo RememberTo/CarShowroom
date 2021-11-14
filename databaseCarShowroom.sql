@@ -41,6 +41,8 @@ FOREIGN KEY (type_accessory_id) REFERENCES type_accessory (id),
 FOREIGN KEY (car_id) REFERENCES car (id)
 );
 
+ALTER TABLE accessories ADD description TEXT;
+
 CREATE TABLE equipment (
 id serial PRIMARY KEY,
 model_id INTEGER,
@@ -51,13 +53,13 @@ fuel VARCHAR(100) NOT NULL,
 FOREIGN KEY (model_id) REFERENCES model (id)
 );
 
-CREATE TABLE payment (
-id serial PRIMARY KEY,
-pay_method VARCHAR(100) NOT NULL,
-initial_donat_money FLOAT CHECK (initial_donat_money > 0),
-monthly_pay FLOAT CHECK (monthly_pay > 0),
-count_month_installment INTEGER CHECK (count_month_installment > 0)
-);
+-- CREATE TABLE payment (
+-- id serial PRIMARY KEY,
+-- pay_method VARCHAR(100) NOT NULL,
+-- initial_donat_money FLOAT CHECK (initial_donat_money > 0),
+-- monthly_pay FLOAT CHECK (monthly_pay > 0),
+-- count_month_installment INTEGER CHECK (count_month_installment > 0)
+-- );
 
 CREATE TABLE contract (
 id serial PRIMARY KEY,
@@ -66,12 +68,19 @@ employee_id INTEGER,
 payment_id INTEGER UNIQUE,
 date_bid TIMESTAMP NOT NULL,
 date_sale TIMESTAMP NOT NULL,
+pay_method VARCHAR(100) NOT NULL,
+initial_donat_money INTEGER CHECK (initial_donat_money > 0),
+monthly_pay INTEGER CHECK (monthly_pay > 0),
+count_month_installment INTEGER CHECK (count_month_installment > 0)
 FOREIGN KEY (customer_id) REFERENCES customer (id),
 FOREIGN KEY (employee_id) REFERENCES employee (id)
 );
-
+ALTER TABLE contract ADD pay_method VARCHAR(100) NOT NULL;
+ALTER TABLE contract ADD initial_donat_money INTEGER CHECK (initial_donat_money > 0);
+ALTER TABLE contract ADD monthly_pay INTEGER CHECK (monthly_pay > 0);
+ALTER TABLE contract ADD count_month_installment INTEGER CHECK (count_month_installment > 0);
 insert into contract (customer_id, employee_id, payment_id)
-
+ALTER TABLE contract DROP COLUMN payment_id;
 
 CREATE TABLE car (
 id serial PRIMARY KEY,
@@ -132,6 +141,38 @@ insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Бе�
 insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 2 ,NULL,'123456795qwertyui','2020-07-14');
 insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Серый', 4 ,NULL,'123456796qwertyui','2019-04-17');
 insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 3 ,NULL,'123456797qwertyui','2019-04-17');
+
+
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Серый', 1 ,NULL,'123456729qwertyui','2014-11-30');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Серый',2,NULL,'123456290qwertyui','2015-10-11');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Золотой', 3 ,NULL,'122456791qwertyui','2019-04-27');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 4 ,NULL,'123656792qwertyui','2019-04-27');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 5 ,NULL,'124556793qwertyui','2020-04-17');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Белый', 6 ,NULL,'126576794qwertyui','2019-04-17');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 2 ,NULL,'123856795qwertyui','2020-07-14');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Серый', 4 ,NULL,'123496796qwertyui','2019-04-17');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 3 ,NULL,'123756797qwertyui','2019-04-17');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Серый', 1 ,NULL,'123346789qwertyui','2014-11-30');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Серый',2,NULL,'123453590qwertyui','2015-10-11');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Золотой', 3 ,NULL,'123456791qwertyui','2019-04-27');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 4 ,NULL,'123156792qwertyui','2019-04-27');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 5 ,NULL,'123256793qwertyui','2020-04-17');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Белый', 6 ,NULL,'123456800qwertyui','2019-04-17');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 2 ,NULL,'1234567035qwertyui','2020-07-14');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Серый', 4 ,NULL,'1234567934wertyui','2019-04-17');
+insert into car (color,equipment_id,contract_id,Vin,release_date) values ('Черный', 3 ,NULL,'123456000qwertyui','2019-04-17');
+
+
+
+
+ Бортовой видеорегистратор ...
+✔ Навигатор ...
+✔ Пуско-зарядное устройство ...
+✔ Обзорные панорамные зеркала ...
+✔ Автомобильный холодильник ...
+✔ Радар-детектор ...
+✔ Оборудование для уборки ...
+✔ Освежители воздуха и ионизаторы
 
 
 ALTER SEQUENCE manufacturer_id_seq RESTART WITH 1;

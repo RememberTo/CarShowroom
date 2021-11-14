@@ -12,15 +12,16 @@ namespace CarShowroom
         public int? CarId { get; set; }
         public string NameAccessory { get; set; }
         public int Price { get; set; }
+        public string Description { get; set; }
 
         public virtual Car Car { get; set; }
         public virtual TypeAccessory TypeAccessory { get; set; }
 
-        public Accessory Add(string name, int price, int TypeAccessoryId, int CarId)
+        public Accessory Add(string name, int price, int TypeAccessoryId, int CarId, string des)
         {
             using (var context = new CarShowroomContext())
             {
-                var empl = new Accessory { NameAccessory = name, Price = price, CarId = CarId, TypeAccessoryId = TypeAccessoryId };
+                var empl = new Accessory { NameAccessory = name, Price = price, CarId = CarId, TypeAccessoryId = TypeAccessoryId, Description = des };
 
                 context.Accessories.Add(empl);
                 context.SaveChanges();

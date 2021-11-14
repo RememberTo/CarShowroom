@@ -43,7 +43,6 @@ C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\Ca
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\pageBidCar.g.cs
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\pageCar.g.cs
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\pageContract.g.cs
-C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\pagePayment.g.cs
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Registration.g.cs
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Work.g.cs
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Authorization.baml
@@ -52,9 +51,15 @@ C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\Ca
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\pageBidCar.baml
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\pageCar.baml
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\pageContract.baml
-C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\pagePayment.baml
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Registration.baml
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Work.baml
 C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\App.baml
-C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\WindowForElement\CarInformation.g.cs
-C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\WindowForElement\CarInformation.baml
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\WindowForPages\AddCarForContract.g.cs
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\WindowForPages\CarInformation.g.cs
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\WindowForPages\AddCarForContract.baml
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Pages\WindowForPages\CarInformation.baml
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\bin\Debug\net5.0-windows\Microsoft.Office.Interop.Word.dll
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\bin\Debug\net5.0-windows\AddWord.dll
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\bin\Debug\net5.0-windows\AddWord.pdb
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Done.g.cs
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\obj\Debug\net5.0-windows\WindowProject\Done.baml

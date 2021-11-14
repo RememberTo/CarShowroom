@@ -7,12 +7,24 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="WindowProject\Pages\WindowForElement\CarInformation.xaml.cs">
+    <Compile Update="WindowProject\Done.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WindowProject\Pages\WindowForPages\AddCarForContract.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WindowProject\Pages\WindowForPages\CarInformation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="WindowProject\Pages\WindowForElement\CarInformation.xaml">
+    <Page Update="WindowProject\Done.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowProject\Pages\WindowForPages\AddCarForContract.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowProject\Pages\WindowForPages\CarInformation.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

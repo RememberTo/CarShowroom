@@ -17,32 +17,115 @@
         
         Title="Автомобили"  Width="1355" Height="830"
  >
-    
-    
-    <Grid Margin="0,0,-0.286,0.647">
 
+
+    <Grid Margin="0,0,-0.286,0.647" Cursor="IBeam">
+        <Grid  HorizontalAlignment="Center" Height="62" Margin="0,771,0,0" VerticalAlignment="Top" Width="1355" Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"/>
 
         <DataGrid
             Style="{StaticResource MaterialDesignDataGrid}"
-            x:Name="GridDatabase" Margin="0,0,216,0"
-
+            x:Name="GridDatabase" Margin="3,0,284,58"
+            Background="{DynamicResource MaterialDesignToolBackground}"
             AutoGenerateColumns="False"
             SelectionMode="Single" RowBackground="#FFFBF7FF" BorderBrush="#1F606060" 
             AlternatingRowBackground="{DynamicResource MaterialDesignDataGridRowHoverBackground}" 
             Cursor="Hand" FontSize="14" MouseDoubleClick="GridDatabase_MouseDoubleClick"
             >
             <DataGrid.Columns>
-                <materialDesign:DataGridTextColumn Header="VIN" Binding="{Binding Path = _Vin,Mode=OneWay }"  Width="160"/>
-                <materialDesign:DataGridTextColumn Header="Производитель" Binding="{Binding Path =  _manufacturer, Mode=OneWay}" Width="140"/>
-                <DataGridTextColumn Header="Модель" Binding="{Binding Path =  _model, Mode=OneWay}" Width="110"/>
+                <materialDesign:DataGridTextColumn Header="VIN" Binding="{Binding Path = _Vin,Mode=OneWay }"  Width="155"/>
+                <materialDesign:DataGridTextColumn Header="Производитель" Binding="{Binding Path =  _manufacturer, Mode=OneWay}" Width="150"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path =  _model, Mode=OneWay}" Width="100"/>
                 <DataGridTextColumn Header="Комплектация" Binding="{Binding Path =  _equipment, Mode=OneWay}" Width="130"/>
-                <DataGridTextColumn Header="Дата выпуска" Binding="{Binding Path =  _releaseDate, Mode=OneWay}" Width="125"/>
-                <DataGridTextColumn Header="Тип топлива" Binding="{Binding Path =  _fuel, Mode=OneWay}" Width="120"/>
+                <DataGridTextColumn Header="Дата выпуска" Binding="{Binding Path =  _releaseDate, Mode=OneWay}" Width="135"/>
+                <!--<DataGridTextColumn Header="Тип топлива" Binding="{Binding Path =  _fuel, Mode=OneWay}" Width="120"/>-->
                 <DataGridTextColumn Header="Тип привода" Binding="{Binding Path =  _drive, Mode=OneWay}" Width="120"/>
                 <DataGridTextColumn Header="Цвет" Binding="{Binding Path =  _color, Mode=OneWay}" Width="100"/>
                 <DataGridTextColumn Header="Цена" Binding="{Binding Path =  _price, Mode=OneWay}" Width="160"/>
             </DataGrid.Columns>
-
         </DataGrid>
+
+
+
+
+        <Label Content="Производитель:" FontSize="16" HorizontalAlignment="Left" Margin="1086,518,0,0" 
+               VerticalAlignment="Top" Height="30" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+
+        <Button Content="Поиск" 
+                x:Name="button_Search"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="1223,787,0,0" VerticalAlignment="Top" 
+                Width="110" Cursor="Hand"  Height="34"  />
+
+        <TextBlock Text="Укажите один или несколько параметров поиска." TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Margin="1086,0,0,0" 
+               VerticalAlignment="Center" Height="56" Width="254" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+
+        <Label Content="VIN автомобиля:" FontSize="16" HorizontalAlignment="Left" Margin="1086,448,0,0" VerticalAlignment="Top" Height="30" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxVIN"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1086,478,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+
+        <TextBox 
+            x:Name="TextBoxManufac"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1086,548,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+
+        <Label Content="Модель:" FontSize="16" HorizontalAlignment="Left" Margin="1086,595,0,0" 
+               VerticalAlignment="Top" Height="30" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxModel"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1086,625,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+
+        <Label Content="Комплектация:" FontSize="16" HorizontalAlignment="Left" Margin="1086,672,0,0" 
+            VerticalAlignment="Top" Height="30" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxEquipment"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1086,702,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+
+
+
+
+        <Button Content="Добавить Производителя" 
+                x:Name="button_AddManufac"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="32,785,0,0" VerticalAlignment="Top" 
+                Width="204" Cursor="Hand"  Height="34"  />
+
+        <Button Content="Добавить Модель" 
+                x:Name="button_AddModel"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="294,785,0,0" VerticalAlignment="Top" 
+                Width="154" Cursor="Hand"  Height="34"  />
+
+        <Button Content="Добавить Комплектацию" 
+                x:Name="button_AddEquipment"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="511,785,0,0" VerticalAlignment="Top" 
+                Width="207" Cursor="Hand"  Height="34"  />
+
+        <Button Content="Добавить Автомобиль" 
+                x:Name="button_AddCar"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="782,785,0,0" VerticalAlignment="Top" 
+                Width="184" Cursor="Hand"  Height="34"  />
     </Grid>
 </Page>

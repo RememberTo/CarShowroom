@@ -21,7 +21,6 @@ namespace CarShowroomSystem.Window
     public partial class Work
     {
         static pageCar car = new pageCar();
-        static pagePayment pay = new pagePayment();
         static pageAccessory aces = new pageAccessory();
         static pageBidCar bid = new pageBidCar();
         static pageContract con = new pageContract();
@@ -42,10 +41,9 @@ namespace CarShowroomSystem.Window
 
 
         }
-        public void ControlButton (bool car, bool acces, bool contract, bool bidCar, bool pay)
+        public void ControlButton (bool car, bool acces, bool contract, bool bidCar)
         {
             ButtonCar.IsEnabled = car;
-            ButtoPayment.IsEnabled = pay;
             ButtonAccessory.IsEnabled = acces;
             ButtonContract.IsEnabled = contract;
             ButtonBidCar.IsEnabled = bidCar;
@@ -73,33 +71,26 @@ namespace CarShowroomSystem.Window
         private void ButtonCar_Click(object sender, RoutedEventArgs e)
         {
             WorkTableFrame.Navigate(car);
-            ControlButton(false, true, true, true, true);
+            ControlButton(false, true, true, true);
         }
 
         private void ButtonAccessory_Click(object sender, RoutedEventArgs e)
         {
             WorkTableFrame.Navigate(aces);
             //WorkTableFrame.Content = new pageAccessory();
-            ControlButton(true, false, true, true, true);
-        }
-
-        private void ButtonContract_Click(object sender, RoutedEventArgs e)
-        {
-            WorkTableFrame.Navigate(con);
-            ControlButton(true, true, false, true, true);
+            ControlButton(true, false, true, true);
         }
 
         private void ButtonBidCar_Click(object sender, RoutedEventArgs e)
         {
             WorkTableFrame.Navigate(bid);
-            ControlButton(true, true, true, false, true);
+            ControlButton(true, true, true, false);
         }
 
-        private void ButtoPayment_Click(object sender, RoutedEventArgs e)
+        private void ButtoContract_Click(object sender, RoutedEventArgs e)
         {
-            //WorkTableFrame.Content = new pagePayment();
-            ControlButton(true, true, true, true, false);
-            WorkTableFrame.Navigate(pay);
+            ControlButton(true, true, false, true);
+            WorkTableFrame.Navigate(con);
         }
         #endregion
 

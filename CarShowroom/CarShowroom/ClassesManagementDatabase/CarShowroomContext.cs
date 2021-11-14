@@ -26,7 +26,6 @@ namespace CarShowroom
         public virtual DbSet<Equipment> Equipment { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
         public virtual DbSet<Model> Models { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<TypeAccessory> TypeAccessories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -48,6 +47,8 @@ namespace CarShowroom
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.CarId).HasColumnName("car_id");
+
+                entity.Property(e => e.Description).HasColumnName("description");
 
                 entity.Property(e => e.NameAccessory)
                     .IsRequired()
@@ -110,8 +111,8 @@ namespace CarShowroom
             {
                 entity.ToTable("contract");
 
-                entity.HasIndex(e => e.PaymentId, "contract_payment_id_key")
-                    .IsUnique();
+               // entity.HasIndex(e => e.PaymentId, "contract_payment_id_key")
+                 //   .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -124,6 +125,17 @@ namespace CarShowroom
                 entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
 
                 entity.Property(e => e.PaymentId).HasColumnName("payment_id");
+
+                entity.Property(e => e.CountMonthInstallment).HasColumnName("count_month_installment");
+
+                entity.Property(e => e.InitialDonatMoney).HasColumnName("initial_donat_money");
+
+                entity.Property(e => e.MonthlyPay).HasColumnName("monthly_pay");
+
+                entity.Property(e => e.PayMethod)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("pay_method");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Contracts)
@@ -246,24 +258,6 @@ namespace CarShowroom
                     .WithMany(p => p.Models)
                     .HasForeignKey(d => d.ManufacturerId)
                     .HasConstraintName("model_manufacturer_id_fkey");
-            });
-
-            modelBuilder.Entity<Payment>(entity =>
-            {
-                entity.ToTable("payment");
-
-                entity.Property(e => e.Id).HasColumnName("id");
-
-                entity.Property(e => e.CountMonthInstallment).HasColumnName("count_month_installment");
-
-                entity.Property(e => e.InitialDonatMoney).HasColumnName("initial_donat_money");
-
-                entity.Property(e => e.MonthlyPay).HasColumnName("monthly_pay");
-
-                entity.Property(e => e.PayMethod)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .HasColumnName("pay_method");
             });
 
             modelBuilder.Entity<TypeAccessory>(entity =>

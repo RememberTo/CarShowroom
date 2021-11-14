@@ -20,7 +20,7 @@ namespace CarShowroomSystem.WindowProject
         public ErorrWindow(string error)
         {
             InitializeComponent();
-            lblString.Content += error;
+            lblString.Text += error;
         }
         public static void ShowS(string error)
         {

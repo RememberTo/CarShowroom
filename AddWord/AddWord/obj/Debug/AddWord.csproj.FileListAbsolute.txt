@@ -1,0 +1,18 @@
+C:\Users\fdkir\source\repos\AddWord\AddWord\bin\Debug\AddWord.dll
+C:\Users\fdkir\source\repos\AddWord\AddWord\bin\Debug\AddWord.pdb
+C:\Users\fdkir\source\repos\AddWord\AddWord\obj\Debug\AddWord.csproj.AssemblyReference.cache
+C:\Users\fdkir\source\repos\AddWord\AddWord\obj\Debug\AddWord.csproj.CoreCompileInputs.cache
+C:\Users\fdkir\source\repos\AddWord\AddWord\obj\Debug\AddWord.dll
+C:\Users\fdkir\source\repos\AddWord\AddWord\obj\Debug\AddWord.pdb
+C:\Users\fdkir\OneDrive\Рабочий стол\AddWord\AddWord\bin\Debug\AddWord.dll
+C:\Users\fdkir\OneDrive\Рабочий стол\AddWord\AddWord\bin\Debug\AddWord.pdb
+C:\Users\fdkir\OneDrive\Рабочий стол\AddWord\AddWord\obj\Debug\AddWord.csproj.CoreCompileInputs.cache
+C:\Users\fdkir\OneDrive\Рабочий стол\AddWord\AddWord\obj\Debug\AddWord.dll
+C:\Users\fdkir\OneDrive\Рабочий стол\AddWord\AddWord\obj\Debug\AddWord.pdb
+C:\Users\fdkir\OneDrive\Рабочий стол\AddWord\AddWord\obj\Debug\AddWord.csproj.AssemblyReference.cache
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\Libraries\AddWord.dll
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\Libraries\AddWord.pdb
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\AddWord\AddWord\obj\Debug\AddWord.csproj.CoreCompileInputs.cache
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\AddWord\AddWord\obj\Debug\AddWord.dll
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\AddWord\AddWord\obj\Debug\AddWord.pdb
+C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\AddWord\AddWord\obj\Debug\AddWord.csproj.AssemblyReference.cache

@@ -15,19 +15,252 @@
          FontFamily="{DynamicResource MaterialDesignFont}"
         
         
-        Title="Контракты"  Width="1355" Height="830"
+        Title="Оплата"  Width="1355" Height="830"
  >
-    <Grid Margin="0,0,-0.286,0.647">
+    <Grid Margin="0,0,-0.286,0.647" RenderTransformOrigin="0.699,0.274">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="815*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Клиент" HorizontalAlignment="Left" Margin="409,165,0,0" VerticalAlignment="Top" Height="30" Width="176"/>
-        <ListBox Background="Azure" Margin="0,200,677,129"/>
-        <Label Content="Добавить автомобиль" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top" Height="30" Width="176"/>
-        <Calendar HorizontalAlignment="Left" Margin="1106,10,0,0" VerticalAlignment="Top" Height="346" Width="239"/>
+        <Grid  HorizontalAlignment="Center" Height="62" Margin="0,771,0,0" VerticalAlignment="Top" Width="1355" Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"/>
+        <Rectangle HorizontalAlignment="Left" Height="72" Margin="54,677,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="358"/>
+        <Rectangle HorizontalAlignment="Left" Height="365" Margin="54,313,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="358"/>
+
+
+        <Label Content="Тип оплаты:" FontSize="16" HorizontalAlignment="Left" Margin="56,17,0,0" VerticalAlignment="Top" Height="32" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <ComboBox
+            x:Name="comboBoxPay"
+            FontSize="16"
+            HorizontalAlignment="Left" Margin="56,49,0,0" 
+                  VerticalAlignment="Top" Width="242" BorderThickness="1,1,1.5,1" Padding="1,4,5,4" Height="36" Foreground="{DynamicResource MaterialDesignBody}" SelectionChanged="comboBoxPay_SelectionChanged" HorizontalContentAlignment="Center">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Полный расчет</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Частичный расчет и кредит</TextBlock>
+            </StackPanel>
+        </ComboBox>
+
+        <Label Content="Количество месяцев кредита:" FontSize="16" HorizontalAlignment="Left" Margin="370,19,0,0" VerticalAlignment="Top" Height="30" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <ComboBox
+            x:Name="comboBoxMonth"
+            FontSize="16"
+            HorizontalAlignment="Left" Margin="370,49,0,0" 
+            VerticalAlignment="Top" Width="242" BorderThickness="1,1,1.5,1" Padding="1,4,5,4" Height="36" Foreground="{DynamicResource MaterialDesignBody}" SelectionChanged="comboBoxPay_SelectionChanged" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock><Run Text="6 месяцев"/></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock><Run Text="12 месяцев"/></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock><Run Text="18 месяцев"/></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock><Run Text="24 месяца"/></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock><Run Text="30 месяца"/></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock><Run Text="36 месяцев"/></TextBlock>
+            </StackPanel>
+        </ComboBox>
+
+        <Label Content="Начальный взнос:" FontSize="16" HorizontalAlignment="Left" Margin="678,19,0,0" VerticalAlignment="Top" Height="32" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}" RenderTransformOrigin="0.497,0.637"/>
+        <TextBox 
+            x:Name="TextBoxInitialPay"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="678,49,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="242"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" PreviewTextInput="TextBoxInitialPay_PreviewTextInput"/>
+
+        <Label Content="Процентная ставка:" FontSize="16" HorizontalAlignment="Left" Margin="57,125,0,0" VerticalAlignment="Top" Height="35" Width="161" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxStavka"
+            PreviewTextInput="TextBoxStavka_PreviewTextInput"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left" FontSize="19"
+            Margin="213,122,0,0" Text="7,5" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="90" BorderThickness="0,0,0,1" Height="28" Cursor="IBeam" Padding="5,5,18,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" UseLayoutRounding="True"/>
+        <Label Foreground="{DynamicResource MaterialDesignBody}" Content="%" FontSize="19" HorizontalAlignment="Left" Margin="281,123,0,0" VerticalAlignment="Top" Height="28" Width="22" RenderTransformOrigin="-0.287,0.519"  VerticalContentAlignment="Top" HorizontalContentAlignment="Center"/>
+
+
+        <TextBlock Text="Укажите один или несколько параметров поиска." TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Margin="1091,313,0,0" 
+               VerticalAlignment="Top" Height="56" Width="254" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+
+
+        <Rectangle HorizontalAlignment="Left" Height="212" Margin="1008,19,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="337"/>
+
+
+        <Label Content="Клиент" FontSize="16" HorizontalAlignment="Left" Margin="1008,19,0,0" VerticalAlignment="Top" Height="32" Width="337" Foreground="{DynamicResource PrimaryHueDarkBrush}" RenderTransformOrigin="0.497,0.637" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+        <Label Content="ФИО:" FontSize="16" HorizontalAlignment="Left" Margin="1018,88,0,0" VerticalAlignment="Top" Height="32" Width="73" Foreground="{DynamicResource PrimaryHueDarkBrush}" RenderTransformOrigin="0.497,0.637"/>
+        <Label Content="Номер телефона:" FontSize="16" HorizontalAlignment="Left" Margin="1013,171,0,0" VerticalAlignment="Top" Height="32" Width="178" Foreground="{DynamicResource PrimaryHueDarkBrush}" RenderTransformOrigin="0.497,0.637"/>
+
+
+        <TextBox 
+            x:Name="TextBoxFIO"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1091,86,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="242"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" PreviewTextInput="TextBoxInitialPay_PreviewTextInput" FlowDirection="RightToLeft"/>
+
+        <TextBox 
+            MaxLength="10"
+            x:Name="TextBoxPhoneNumber"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1199,169,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="134"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="100,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" PreviewTextInput="TextBoxInitialPay_PreviewTextInput" FlowDirection="LeftToRight"/>
+
+
+        <TextBlock
+            FontSize="19"
+            x:Name="TextBlockPrice"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left" Margin="73,712,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="327" Padding="0,6,0,68" ScrollViewer.CanContentScroll="True" OpacityMask="{DynamicResource MaterialDesignTextAreaBorder}"/>
+        <Label Content="Стоимость:" FontSize="16" HorizontalAlignment="Left" Margin="64,687,0,0" VerticalAlignment="Top" Height="25" Width="154" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+
+        <Button Content="Расчитать стоимость" 
+                x:Name="button_getPrice"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="54,785,0,0" VerticalAlignment="Top" 
+                Width="180" Cursor="Hand"  Height="34" Click="button_getPrice_Click" />
+        <Button Content="Очистить" 
+                x:Name="button_Remove"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="292,785,0,0" VerticalAlignment="Top" 
+                Width="120" Cursor="Hand"  Height="34" Click="button_Remove_Click" />
+
+        <Button Content="Сформировать контракт" 
+                x:Name="button_Contract"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignFlatButtonRipple}"
+                HorizontalAlignment="Left" Margin="645,785,0,0" VerticalAlignment="Top" 
+                Width="228" Cursor="Hand"  Height="34" Click="button_Contract_Click"/>
+        <ListView x:Name="listViewProduct" Margin="56,315,945,153" RenderTransformOrigin="0.5,0.5">
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.041"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.134"/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn   Width="180" Header="Товар" DisplayMemberBinding="{Binding ManufacModelEquip}"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <DataGrid x:Name="DataGridSelCar" 
+                   Style="{StaticResource MaterialDesignDataGrid}"
+                  Cursor="Hand"
+            AutoGenerateColumns="False"
+            SelectionMode="Single"
+                  
+                  Margin="442,313,280,80" Background="{DynamicResource MaterialDesignToolBackground}" MouseDoubleClick="DataGridSelCar_MouseDoubleClick" >
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn Header="VIN" Binding="{Binding Path = _Vin,Mode=OneWay }"  Width="160"/>
+                <materialDesign:DataGridTextColumn Header="Производитель" Binding="{Binding Path =  _manufacturer, Mode=OneWay}" Width="140"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path =  _model, Mode=OneWay}" Width="100"/>
+                <DataGridTextColumn Header="Комплектация" Binding="{Binding Path =  _equipment, Mode=OneWay}" Width="125"/>
+                <DataGridTextColumn Header="Цвет" Binding="{Binding Path =  _color, Mode=OneWay}" Width="85"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Производитель:" FontSize="16" HorizontalAlignment="Left" Margin="1091,448,0,0" 
+               VerticalAlignment="Top" Height="33" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+
+        <Button Content="Поиск" 
+                x:Name="button_Search"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="1223,785,0,0" VerticalAlignment="Top" 
+                Width="110" Cursor="Hand"  Height="34" Click="button_Search_Click"  />
+
+        <TextBlock Text="Ежемесячный платеж:"  TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Margin="366,129,0,0" 
+               VerticalAlignment="Top" Height="26" Width="173" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxMonthPay"
+            PreviewTextInput="TextBoxStavka_PreviewTextInput"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left" FontSize="19"
+            Margin="539,121,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="150" BorderThickness="0,0,0,1" Height="28" Cursor="IBeam" Padding="5,5,58,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" UseLayoutRounding="True" IsEnabled="False"/>
+        <Label Content="рублей" FontSize="16" HorizontalAlignment="Left" Margin="630,124,0,0" VerticalAlignment="Top" Height="31" Width="59" Foreground="{DynamicResource MaterialDesignToolTipBackground}"/>
+
+
+        <Label Content="VIN автомобиля:" FontSize="16" HorizontalAlignment="Left" Margin="1091,374,0,0" VerticalAlignment="Top" Height="33" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxVIN"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1091,407,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+
+        <TextBox 
+            x:Name="TextBoxManufac"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1091,481,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+
+        <Label Content="Модель:" FontSize="16" HorizontalAlignment="Left" Margin="1091,522,0,0" 
+               VerticalAlignment="Top" Height="34" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxModel"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1091,556,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+
+        <Label Content="Комплектация:" FontSize="16" HorizontalAlignment="Left" Margin="1091,597,0,0" 
+            VerticalAlignment="Top" Height="33" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxEquipment"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1091,630,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+
+        <Label Content="Цвет:" FontSize="16" HorizontalAlignment="Left" Margin="1091,671,0,0" 
+            VerticalAlignment="Top" Height="36" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
+        <TextBox 
+            x:Name="TextBoxColor"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="1091,700,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="254"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+        <TextBlock FontSize="19" HorizontalAlignment="Left" Margin="1200,176,0,0" Text="+7" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource PrimaryHueMidBrush}" Height="18" Width="31"/>
+        <Rectangle HorizontalAlignment="Left" Height="34" Margin="1223,170,0,0" Stroke="{DynamicResource MaterialDesignToolTipBackground}" VerticalAlignment="Top" Width="1"/>
+
+
+        <Button Content="Расчитать кредит" 
+                x:Name="button_Credit"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="64,197,0,0" VerticalAlignment="Top" 
+                Width="154" Cursor="Hand"  Height="34" Click="button_Credit_Click" />
+
     </Grid>
 </Page>
