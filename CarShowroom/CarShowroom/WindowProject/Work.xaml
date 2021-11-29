@@ -47,9 +47,9 @@
                 Margin="1249,0,0,0" VerticalAlignment="Center" Width="53" 
                 RenderTransformOrigin="0.839,1.596" Height="38" Grid.Column="1" Click="ButtonMinimaized_Click" Cursor="Hand" Foreground="{DynamicResource MaterialDesignBody}"/>
 
-        <Frame x:Name="WorkTableFrame" 
+        <Frame x:Name="WorkTableFrame"  
                 Margin="195,0,0,0" Grid.Row="1" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"/>
-        <materialDesign:PopupBox Content="PopupBox" VerticalAlignment="Center" Height="36" Width="47" BorderBrush="#DD040000" OpacityMask="Black" Background="#FFB3BFC1" Margin="8,0,0,0" RenderTransformOrigin="0.5,0.5" Foreground="#FF364761">
+        <materialDesign:PopupBox Content="PopupBox" VerticalAlignment="Center" Height="36" Width="47" BorderBrush="#DD040000" OpacityMask="Black" Background="#FFB3BFC1" Margin="8,0,0,0" RenderTransformOrigin="0.5,0.5" Foreground="#FF364761" Padding="0,0,0,0">
             <materialDesign:PopupBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="1"/>
@@ -59,9 +59,9 @@
                 </TransformGroup>
             </materialDesign:PopupBox.RenderTransform>
             <StackPanel >
-                <Button Content="Account"/>
-                <Button Content="Account"/>
-                <Button Content="Account"/>
+                <Button Click="Button_Click" Content="Аккаунт"/>
+                <Button Click="ButtonEvent_Click" Content="Журнал событий"/>
+                <Button Click="Button_Click_1" Content="Выход"/>
             </StackPanel>
         </materialDesign:PopupBox>
 
@@ -73,25 +73,50 @@
 
         <Button x:Name="ButtonCar" 
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
-                Content="Автомобили" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Width="195" Grid.Row="1" Height="54" Cursor="Hand" Click="ButtonCar_Click" >
+                 HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Width="195" Grid.Row="1" Height="54" Cursor="Hand" Click="ButtonCar_Click" >
+            <StackPanel Orientation="Horizontal" Width="173">
+                <Image  Source="Images\cars.png"  Height="29" Width="30" />
+                <Label  Content="Автомобили" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="142"/>
+            </StackPanel>
         </Button>
 
         <Button x:Name="ButtonAccessory" 
             Style="{StaticResource MaterialDesignFlatDarkButton}"
-            Content="Аксессуары" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"  
-                Margin="0,54,0,0" VerticalAlignment="Top" Width="194" Grid.Row="1" Height="54" Cursor="Hand" Click="ButtonAccessory_Click" />
-
+             HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"  
+                Margin="0,54,0,0" VerticalAlignment="Top" Width="194" Grid.Row="1" Height="54" Cursor="Hand" Click="ButtonAccessory_Click">
+            <StackPanel Orientation="Horizontal" Width="170">
+                <Image  Source="Images\acess.png"  Height="29" Width="30" />
+                <Label  Content="Аксессуары" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="138"/>
+            </StackPanel>
+        </Button>
         <Button x:Name="ButtonBidCar" 
             Style="{StaticResource MaterialDesignFlatDarkButton}"
-            Content="Заявки" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" 
-                Margin="0,162,0,0" VerticalAlignment="Top" Width="195" Grid.Row="1" Height="54" Cursor="Hand" Click="ButtonBidCar_Click"/>
+            HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" 
+                Margin="0,162,0,0" VerticalAlignment="Top" Width="195" Grid.Row="1" Height="54" Cursor="Hand" Click="ButtonBidCar_Click">
+            <StackPanel Orientation="Horizontal" Width="167">
+                <Image  Source="Images\bid.png"  Height="29" Width="30" />
+                <Label  Content="Заявки" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="131"/>
+            </StackPanel>
+        </Button>
 
+        <Button x:Name="ButtonEvent" 
+            Style="{StaticResource MaterialDesignFlatDarkButton}"
+            Content="Журнал событий" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" 
+                Margin="0,715,0,0" VerticalAlignment="Top" Width="195" Grid.Row="1" Height="54" Cursor="Hand" Click="ButtonEvent_Click"/>
 
 
         <Button x:Name="ButtonContract" 
             Style="{StaticResource MaterialDesignFlatDarkButton}"
-            Content="Контракты" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" 
-            Margin="0,108,0,0" VerticalAlignment="Top" Width="195" Grid.Row="1" Height="54" Click="ButtoContract_Click" Cursor="Hand"/>
+             HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" 
+            Margin="0,108,0,0" VerticalAlignment="Top" Width="195" Grid.Row="1" Height="54" Cursor="Hand" Click="ButtonContract_Click">
+            <StackPanel Orientation="Horizontal" Width="168">
+                <Image  Source="Images\contract.png"  Height="29" Width="30" />
+                <Label  Content="Контракты" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="129"/>
+            </StackPanel>
+        </Button>
+
+
+
         <TextBlock 
                x:Name="labelTime"
                FontSize="15"

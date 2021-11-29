@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 #nullable disable
 
@@ -31,6 +32,16 @@ namespace CarShowroom
                 return model;
             }
 
+        }
+
+        public Model GetSoModel(string car)
+        {
+            using (var context = new CarShowroomContext())
+            {
+                var query = context.Models.FirstOrDefault(x => x.NameModel == car);
+
+                return query;
+            }
         }
 
     }

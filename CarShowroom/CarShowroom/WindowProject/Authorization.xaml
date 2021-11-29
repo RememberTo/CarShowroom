@@ -18,6 +18,7 @@
         
         Title="Авторизация" Height="341" Width="503" WindowStartupLocation="CenterScreen" ResizeMode ="NoResize">
     <Grid Margin="0,0,10,7">
+        <Image Source="Images\car.png" Margin="3,49,324,136"/>
         <Button Content="ОК" 
                 x:Name="button_OK"
                 Style="{StaticResource MaterialDesignFlatDarkButton}"

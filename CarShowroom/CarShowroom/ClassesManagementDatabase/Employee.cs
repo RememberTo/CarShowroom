@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarShowroom.ClassesManagementDatabase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,7 +23,8 @@ namespace CarShowroom
         public string Password { get; set; }
 
         public virtual ICollection<Contract> Contracts { get; set; }
-
+        public virtual ICollection<Eventslog> Eventslogs { get; set; }
+        public virtual ICollection<Bid> Bids { get; set; }
 
         public Employee Add(string Fio, string Departament, string Position, string PhoneNumber, string Login, string Password)
         {
@@ -41,8 +43,16 @@ namespace CarShowroom
         {
             using (var db = new CarShowroomContext())
             {
-                var user = db.Employees.FirstOrDefault(x => x.Login == login && x.Password == pass);
-                return user;
+                if (pass == null)
+                {
+                    var user = db.Employees.FirstOrDefault(x => x.Login == login);
+                    return user;
+                }
+                else
+                {
+                    var user = db.Employees.FirstOrDefault(x => x.Login == login && x.Password == pass);
+                    return user;
+                }
             }
         }
     }

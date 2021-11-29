@@ -1,0 +1,77 @@
+﻿<Page x:Class="CarShowroom.WindowProject.Pages.Account"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CarShowroom.WindowProject.Pages"
+      
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignFlatButtonRipple}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignToolBackground}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        
+        Title="Аккаунт"  Width="1355" Height="830"
+ >
+
+    <Grid>
+        <Grid  HorizontalAlignment="Center" Height="62" Margin="0,771,0,0" VerticalAlignment="Top" Width="1355" Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"/>
+
+        <TextBlock FontSize="18"  HorizontalAlignment="Left" Margin="489,66,0,0" Text="ФИО:" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="55"/>
+        <TextBlock x:Name="FIO" FontSize="18"  HorizontalAlignment="Left" Margin="544,66,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="507"/>
+        <TextBlock FontSize="18"  HorizontalAlignment="Left" Margin="489,99,0,0" Text="Отдел:" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="63"/>
+        <TextBlock x:Name="Depart" FontSize="18"  HorizontalAlignment="Left" Margin="552,99,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="499"/>
+        <TextBlock FontSize="18"  HorizontalAlignment="Left" Margin="489,132,0,0" Text="Должность:" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="103"/>
+        <TextBlock x:Name="Position" FontSize="18"  HorizontalAlignment="Left" Margin="592,132,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="459"/>
+        <TextBlock FontSize="18"  HorizontalAlignment="Left" Margin="489,198,0,0" Text="Логин:" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="63"/>
+        <TextBlock x:Name="Login" FontSize="18"  HorizontalAlignment="Left" Margin="552,198,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="499"/>
+        <TextBlock FontSize="18"  HorizontalAlignment="Left" Margin="489,165,0,0" Text="Телефон:" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="81"/>
+        <TextBlock x:Name="Phone" FontSize="18"  HorizontalAlignment="Left" Margin="570,165,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="481"/>
+        <TextBlock FontSize="18"  HorizontalAlignment="Left" Margin="489,231,0,0" Text="Пароль:" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="81"/>
+        <TextBlock x:Name="Password" FontSize="18"  HorizontalAlignment="Left" Margin="570,231,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Foreground="{DynamicResource MaterialDesignBody}" Height="33" Width="481"/>
+
+
+        <Label x:Name="labelImg"  Content="Фотография" HorizontalAlignment="Left" Margin="47,52,0,0" VerticalAlignment="Top" Height="358" Width="382" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{DynamicResource MaterialDesignTextAreaInactiveBorder}"/>
+        <Image x:Name="img" HorizontalAlignment="Left"  Height="354" Margin="47,52,0,0" VerticalAlignment="Top" Width="383"/>
+        <Button x:Name="ButtonSourceImage" 
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Content="..." HorizontalAlignment="Left" FontSize="20" Margin="47,415,0,0" 
+                VerticalAlignment="Top" Width="31"  RenderTransformOrigin="-0.06,0.72" 
+                Height="16" Cursor="Hand" Foreground="{DynamicResource MaterialDesignBody}"  Padding="0,-11,0,0" Click="ButtonSourceImage_Click" />
+
+        <Button x:Name="GetPass" Content="Посмотреть пароль" HorizontalAlignment="Left" Margin="489,269,0,0" VerticalAlignment="Top" Width="165" Background="{DynamicResource MaterialDesignChipBackground}" BorderThickness="0,0,0,0" Foreground="{DynamicResource MaterialDesignCheckBoxOff}" RenderTransformOrigin="0.528,-1.606" Height="25" Click="GetPass_Click"/>
+        <Rectangle HorizontalAlignment="Left" Height="133" Margin="489,633,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="856"/>
+        <Rectangle HorizontalAlignment="Left" Height="447" Margin="489,319,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="856"/>
+        <ListView x:Name="listViewAccessory" Width="850" Margin="489,319,10,197">
+
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem FontSize="15" Header="Удалить" Click="MenuItem_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+
+                <GridView>
+                    <GridViewColumn Width="840" Header="Задание"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox 
+            x:Name="TextBoxOpis"
+            Style="{StaticResource MaterialDesignTextBox}"
+            Foreground="{DynamicResource MaterialDesignBody}"
+            HorizontalAlignment="Left"  FontSize="19"
+            Margin="500,676,0,0" Text="" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="834"  BorderThickness="1,1,1,1" Height="80" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label FontSize="18" Foreground="{DynamicResource MaterialDesignToolTipBackground}" Content="Введите текст задачи" HorizontalAlignment="Left" Margin="500,646,0,0" VerticalAlignment="Top" Width="206" Height="30" RenderTransformOrigin="0.534,0.537" />
+
+        <Button x:Name="ButtonCar"  Content="Добавить"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                 HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Width="135" Height="36" Cursor="Hand" Click="ButtonCar_Click" Margin="1199,784,0,0" Background="{DynamicResource MaterialDesignChipBackground}" />
+        <InkCanvas x:Name="canvas" Margin="47,456,926,64" Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"/>
+    </Grid>
+</Page>

@@ -14,6 +14,10 @@ using System.Windows.Shapes;
 using CarShowroom.SelectedClass;
 using CarShowroom.WindowProject;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
+using CarShowroomSystem.Window;
+using CarShowroom.ClassesManagementDatabase;
+using System.IO;
 
 namespace CarShowroomSystem.WindowProject.Pages
 {
@@ -24,11 +28,26 @@ namespace CarShowroomSystem.WindowProject.Pages
     {
         List<Auto> autos;
         List<Acess> acesses;
+        Eventslog eventslog = new Eventslog();
+        string login;
+        public pageBidCar(string logi)
+        {
+            try
+            {
+                InitializeComponent();
+                autos = new List<Auto>();
+                acesses = new List<Acess>();
+                login = logi;
+            }
+            catch (Exception)
+            {
+                ErorrWindow.ShowS("инициализации");
+            }
+
+        }
         public pageBidCar()
         {
-            InitializeComponent();
-            autos = new List<Auto>();
-            acesses = new List<Acess>();
+
         }
 
         private void button_Word_Click(object sender, RoutedEventArgs e)
@@ -37,55 +56,75 @@ namespace CarShowroomSystem.WindowProject.Pages
             {
 
                 bool isReadyA = false;
-                bool isReadyAcess =false;
+                bool isReadyAcess = false;
                 int i = 0;
-                if ((autos.Count == 0)&&(acesses.Count == 0)) throw new ArgumentException();
+                if ((autos.Count == 0) && (acesses.Count == 0)) throw new ArgumentException();
+                Bid bid = new Bid();
                 if (autos.Count != 0)
                 {
+                    string Auto = string.Empty;
+                    string countAuto = string.Empty;
                     ProcessingWord Autosword = new ProcessingWord("SampleBid.docx");
                     foreach (var item in autos)
                     {
-                        var items = new Dictionary<string, string>
-                    {
-                        {"<Auto>", item.Manufacturer+" "+item.Model+" "+item.Equipment},
-                        { "<count>", Convert.ToString(item.Amount)}
-                    };
-                        Autosword.Process(items, @"Заявки\Автомобили", i);
-                        i++;
+                        Auto += item.Manufacturer + " " + item.Model + " " + item.Equipment + Convert.ToChar(94) + Convert.ToChar(112);
+                        countAuto += Convert.ToString(item.Amount) + Convert.ToChar(94) + Convert.ToChar(112);
+                        int id = bid.AddBid(login, "Автомобили", item.Manufacturer + " " + item.Model + " " + item.Equipment, item.Amount).Id;
+                        eventslog.AddEvents(login, "Информация", DateTime.Now, "Сформирована заявка на закупку автомобиля №" + Convert.ToString(id));
                     }
+                    var items = new Dictionary<string, string>
+                        {
+                        {"<Auto>", Auto},
+                        { "<count>", countAuto}
+                        };
+                    Autosword.Process(items, @"Заявки\Автомобили", i);
+                    i++;
+
                     isReadyA = Autosword.IsSuccsesfull;
                 }
                 if (acesses.Count != 0)
                 {
+
+                    string type = string.Empty;
+                    string typcount = string.Empty;
                     ProcessingWord Accesword = new ProcessingWord("Access.docx");
                     foreach (var item in acesses)
                     {
-                        var items = new Dictionary<string, string>
-                    {
-                        {"<TypesName>", item.Type+" "+item.Name},
-                        { "<count>", Convert.ToString(item.Amount)}
-                    };
-                        Accesword.Process(items, @"Заявки\Аксессуары", i);
-                        i++;
+                        type += item.Type + " " + item.Name + Convert.ToChar(94) + Convert.ToChar(112);
+                        typcount += Convert.ToString(item.Amount) + Convert.ToChar(94) + Convert.ToChar(112);
+                        int id = bid.AddBid(login, "Аксессуары", item.Type + " " + item.Name, item.Amount).Id;
+                        eventslog.AddEvents(login, "Информация", DateTime.Now, "Сформирована заявка на закупку аксессуара №" + Convert.ToString(id));
                     }
+
+                    var items = new Dictionary<string, string>
+                    {
+                        {"<TypesName>", type},
+                        { "<count>", typcount}
+                    };
+                    Accesword.Process(items, @"Заявки\Аксессуары", i);
+                    i++;
+
                     isReadyAcess = Accesword.IsSuccsesfull;
                 }
                 if (isReadyA || isReadyAcess)
                 {
-                    Done.ShowS("Накладная сформирована");
+
+                    DirectoryInfo dirInfo = new DirectoryInfo(@"C:\Users\fdkir\OneDrive\Рабочий стол\Курсовая работа\CarShowroom\CarShowroom\WordFile\Заявки");
+                    string path = Directory.GetCurrentDirectory();
+                    Done.ShowS("Заявка сформирована");
                 }
                 else
                 {
-                    ErorrWindow.ShowS("Не получилось сформировать накладную");
+                    ErorrWindow.ShowS("Не получилось сформировать заявку");
                 }
             }
-            catch(ArgumentException)
+            catch (ArgumentException)
             {
                 ErorrWindow.ShowS("Списки из автомобилей и аксессуаров отсутствуют");
             }
             catch (Exception)
             {
-                ErorrWindow.ShowS("Не получилось сформировать накладную");
+                ErorrWindow.ShowS("Не получилось сформировать заявку");
             }
 
         }
@@ -105,7 +144,7 @@ namespace CarShowroomSystem.WindowProject.Pages
                     Manufacturer = TextBox_Manufacturer.Text,
                     Model = TextBox_Model.Text,
                     Equipment = TextBox_Equipment.Text,
-                    Amount = Convert.ToInt32(TextBox_Amount.Text)
+                    Amount = (Convert.ToInt32(TextBox_Amount.Text) < 1) ? throw new Exception() : Convert.ToInt32(TextBox_Amount.Text),
                 };
                 autos.Add(auto);
                 listViewCar.Items.Add(auto);
@@ -114,9 +153,9 @@ namespace CarShowroomSystem.WindowProject.Pages
                 TextBox_Model.Text = "";
                 TextBox_Amount.Text = "";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ErorrWindow.ShowS(ex.ToString());
+                ErorrWindow.ShowS("Количество машин не может быть равным: " + TextBox_Amount.Text);
             }
         }
 
@@ -129,8 +168,9 @@ namespace CarShowroomSystem.WindowProject.Pages
                     Type = TextBox_Type.Text,
                     Name = TextBox_Name.Text,
                     Opis = TextBoxOpis.Text,
-                    Amount = Convert.ToInt32(TextBox_AmountA.Text)
-                    
+                    Amount = (Convert.ToInt32(TextBox_AmountA.Text) < 1) ? throw new Exception() : Convert.ToInt32(TextBox_AmountA.Text),
+
+
                 };
                 acesses.Add(acess);
                 listViewAccessory.Items.Add(acess);
@@ -139,9 +179,9 @@ namespace CarShowroomSystem.WindowProject.Pages
                 TextBoxOpis.Text = "";
                 TextBox_AmountA.Text = "";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ErorrWindow.ShowS(ex.ToString());
+                ErorrWindow.ShowS("Количество аксессуаров не может быть равным: " + TextBox_AmountA.Text);
             }
         }
 

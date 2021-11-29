@@ -7,12 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="WindowProject\Images\acess.png" />
+    <None Remove="WindowProject\Images\bid.png" />
+    <None Remove="WindowProject\Images\car.png" />
+    <None Remove="WindowProject\Images\cars.png" />
+    <None Remove="WindowProject\Images\contract.png" />
+    <None Remove="WindowProject\Images\employee.png" />
+    <None Remove="WindowProject\Images\error.png" />
+    <None Remove="WindowProject\Images\free.png" />
+    <None Remove="WindowProject\Images\word.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Office.Interop.Word" Version="15.0.4797.1003" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
   </ItemGroup>
 
@@ -20,5 +31,17 @@
     <Reference Include="AddWord">
       <HintPath>Libraries\AddWord.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="WindowProject\Images\acess.png" />
+    <Resource Include="WindowProject\Images\bid.png" />
+    <Resource Include="WindowProject\Images\car.png" />
+    <Resource Include="WindowProject\Images\cars.png" />
+    <Resource Include="WindowProject\Images\contract.png" />
+    <Resource Include="WindowProject\Images\employee.png" />
+    <Resource Include="WindowProject\Images\error.png" />
+    <Resource Include="WindowProject\Images\free.png" />
+    <Resource Include="WindowProject\Images\word.ico" />
   </ItemGroup>
 </Project>

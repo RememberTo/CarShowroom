@@ -10,6 +10,7 @@ namespace CarShowroom.SelectedClass
     {
     }
 
+
     class Auto
     {
         public string Manufacturer { get; set; }
@@ -30,33 +31,54 @@ namespace CarShowroom.SelectedClass
         public string ManufacModelEquip { get; set; }
         public int Price { get; set; }
         public string Vin { get; set; }
-
-        public override bool Equals(Object productCar)
-        {
-            try
-            {
-                var pr = (ProductCar)productCar;
-                if (Vin == pr.Vin)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
     }
 
     class Payment
     {
-        string Type { get; set; }
-        double InitialPay { get; set; }
-        double MonthPay { get; set; }
-        int CountMonth { get; set; }
+        public string Type { get; set; }
+        public double InitialPay { get; set; }
+        public double MonthPay { get; set; }
+        public  int CountMonth { get; set; }
+    }
+    class Access
+    {
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public string Discription { get; set; }
+    }
+
+    class FullCar
+    {
+        public string ManufacModelEquip { get; set; }
+        public string Price { get; set; }
+        public string Drive { get; set; }
+        public string Fuel { get; set; }
+        public string Color { get; set; }
+        public DateTime Date { get; set; }
+        public string Vin { get; set; }
+        public string Mileage { get; set; }
+    }
+
+    class AddingAccessToCar
+    {
+        public int _Id { get; set; }
+        public string _type { get; set; }
+        public string _name { get; set; }
+        public int _price { get; set; }
+        public string _opis { get; set; }
+        
+    }
+
+    class FullCarToAcess
+    {
+        public string Manufac { get; set; }
+        public string Model { get; set; }
+        public string Equip { get; set; }
+        public int Price { get; set; }
+        public string Color { get; set; }
+        public DateTime Date { get; set; }
+        public string Vin { get; set; }
     }
 }

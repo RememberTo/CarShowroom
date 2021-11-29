@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tiElQJOLzPkGKbPij4ZAtgfbsX3oHuIIe3eWHmC6TQ+g+iHcgypzq33xfR2tQWcIq9QTRziHpgZcwU15z89EmA==",
+  "dgSpecHash": "HPY18YRkw5Api+j2hS8+GOckX799UggJh9dyobBbmYrzLhzPdI+RkjLN5zf4/eSK8zEvOfDphHT6jElqLuwfzw==",
   "success": true,
   "projectFilePath": "C:\\Users\\fdkir\\OneDrive\\Рабочий стол\\Курсовая работа\\CarShowroom\\CarShowroom\\CarShowroom.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,6 @@
     "C:\\Users\\fdkir\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\fdkir\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\fdkir\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
-    "C:\\Users\\fdkir\\.nuget\\packages\\microsoft.office.interop.word\\15.0.4797.1003\\microsoft.office.interop.word.15.0.4797.1003.nupkg.sha512",
     "C:\\Users\\fdkir\\.nuget\\packages\\npgsql\\5.0.10\\npgsql.5.0.10.nupkg.sha512",
     "C:\\Users\\fdkir\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.10\\npgsql.entityframeworkcore.postgresql.5.0.10.nupkg.sha512",
     "C:\\Users\\fdkir\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
@@ -31,16 +30,5 @@
     "C:\\Users\\fdkir\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "C:\\Users\\fdkir\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Пакет \"Microsoft.Office.Interop.Word 15.0.4797.1003\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
-      "libraryId": "Microsoft.Office.Interop.Word",
-      "targetGraphs": [
-        "net5.0-windows7.0"
-      ]
-    }
-  ]
+  "logs": []
 }

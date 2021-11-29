@@ -24,19 +24,24 @@
 
         <DataGrid
             Style="{StaticResource MaterialDesignDataGrid}"
-            x:Name="GridDatabase" Margin="0,0,229,58"
+            x:Name="GridDatabase" Margin="4,0,254,58"
             Background="{DynamicResource MaterialDesignToolBackground}"
             AutoGenerateColumns="False"
             SelectionMode="Single" RowBackground="#FFFBF7FF" BorderBrush="#1F606060" 
             AlternatingRowBackground="{DynamicResource MaterialDesignDataGridRowHoverBackground}" 
             Cursor="Hand" FontSize="14"
             >
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить" Click="MenuItem_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
-                <materialDesign:DataGridTextColumn Header="Код" Binding="{Binding Path = _Vin,Mode=OneWay }"  Width="100"/>
-                <materialDesign:DataGridTextColumn Header="Тип" Binding="{Binding Path =  _manufacturer, Mode=OneWay}" Width="150"/>
-                <DataGridTextColumn Header="Наименование" Binding="{Binding Path =  _model, Mode=OneWay}" Width="200"/>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Path =  _price, Mode=OneWay}" Width="160"/>
-                <DataGridTextColumn Header="Описание" Binding="{Binding Path =  _price, Mode=OneWay}" Width="535"/>
+                <materialDesign:DataGridTextColumn Header="Код" Binding="{Binding Path = _Id,Mode=OneWay }"  Width="100"/>
+                <materialDesign:DataGridTextColumn Header="Тип" Binding="{Binding Path =  _Type, Mode=OneWay}" Width="150"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Path =  _Name, Mode=OneWay}" Width="200"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Path =  _Price, Mode=OneWay}" Width="160"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Path =  _Discription, Mode=OneWay}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -45,15 +50,29 @@
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
                 Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
                 HorizontalAlignment="Left" Margin="1223,785,0,0" VerticalAlignment="Top" 
-                Width="110" Cursor="Hand"  Height="34"  />
+                Width="110" Cursor="Hand"  Height="34" Click="button_Search_Click"  />
 
         <Button Content="Добавить" 
                 x:Name="button_Add"
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
                 Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
                 HorizontalAlignment="Left" Margin="32,785,0,0" VerticalAlignment="Top" 
-                Width="110" Cursor="Hand"  Height="34"  />
+                Width="160" Cursor="Hand"  Height="34" Click="button_Add_Click"  />
 
+        <Button Content="Добавить аксессуар к автомобилю" 
+                x:Name="button_AddAcessoryToCar"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="285,785,0,0" VerticalAlignment="Top" 
+                Width="282" Cursor="Hand"  Height="34" Click="button_AddAcessoryToCar_Click"/>
+
+        <Button Content="↻" 
+                x:Name="button_Update"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                FontSize="25"         
+                Background="{DynamicResource MaterialDesignToolBackground}"
+                HorizontalAlignment="Left" Margin="1050,0,0,0" VerticalAlignment="Top" 
+                Width="51" Cursor="Hand"  Height="36" Padding="0,-2,0,0" Foreground="{DynamicResource MaterialDesignBody}" Click="button_Update_Click" RenderTransformOrigin="1.845,0.632"  />
 
 
         <TextBlock Text="Укажите один или несколько параметров поиска." TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Margin="1131,547,0,0" 

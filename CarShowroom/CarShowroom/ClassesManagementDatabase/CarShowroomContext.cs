@@ -1,4 +1,5 @@
 ﻿using System;
+using CarShowroom.ClassesManagementDatabase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -21,6 +22,8 @@ namespace CarShowroom
         public virtual DbSet<Accessory> Accessories { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<Eventslog> Eventslogs { get; set; }
+        public virtual DbSet<Bid> Bids { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
@@ -57,6 +60,7 @@ namespace CarShowroom
 
                 entity.Property(e => e.Price).HasColumnName("price");
 
+
                 entity.Property(e => e.TypeAccessoryId).HasColumnName("type_accessory_id");
 
                 entity.HasOne(d => d.Car)
@@ -68,6 +72,52 @@ namespace CarShowroom
                     .WithMany(p => p.Accessories)
                     .HasForeignKey(d => d.TypeAccessoryId)
                     .HasConstraintName("accessories_type_accessory_id_fkey");
+            });
+
+            modelBuilder.Entity<Eventslog>(entity =>
+            {
+                entity.ToTable("eventslog");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+
+                entity.Property(e => e.Type)
+                    .HasMaxLength(100)
+                    .HasColumnName("type");
+
+                entity.Property(e => e.Date).HasColumnName("date");
+
+                entity.Property(e => e.Event).HasColumnName("event");
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Eventslogs)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .HasConstraintName("eventslog_employee_id_fkey");
+
+            });
+
+            modelBuilder.Entity<Bid>(entity =>
+            {
+                entity.ToTable("bid");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+
+                entity.Property(e => e.Type)
+                    .HasMaxLength(100)
+                    .HasColumnName("type");
+
+                entity.Property(e => e.Name).HasColumnName("name");
+
+                entity.Property(e => e.Count).HasColumnName("count");
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Bids)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .HasConstraintName("bid_employee_id_fkey");
+
             });
 
             modelBuilder.Entity<Car>(entity =>
@@ -96,6 +146,14 @@ namespace CarShowroom
                     .HasMaxLength(17)
                     .HasColumnName("vin");
 
+                entity.Property(e => e.Mileage)
+                    .HasMaxLength(500)
+                    .HasColumnName("mileage");
+
+                entity.Property(e => e.Price)
+                    .IsRequired()
+                    .HasColumnName("price");
+
                 entity.HasOne(d => d.Contract)
                     .WithMany(p => p.Cars)
                     .HasForeignKey(d => d.ContractId)
@@ -118,13 +176,11 @@ namespace CarShowroom
 
                 entity.Property(e => e.CustomerId).HasColumnName("customer_id");
 
-                entity.Property(e => e.DateBid).HasColumnName("date_bid");
 
                 entity.Property(e => e.DateSale).HasColumnName("date_sale");
 
                 entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
 
-                entity.Property(e => e.PaymentId).HasColumnName("payment_id");
 
                 entity.Property(e => e.CountMonthInstallment).HasColumnName("count_month_installment");
 
@@ -181,6 +237,7 @@ namespace CarShowroom
                     .HasColumnName("fio");
 
                 entity.Property(e => e.Login)
+                    .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("login");
 
@@ -215,8 +272,6 @@ namespace CarShowroom
                     .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("name_equipment");
-
-                entity.Property(e => e.Price).HasColumnName("price");
 
                 entity.Property(e => e.TypeDrive)
                     .IsRequired()

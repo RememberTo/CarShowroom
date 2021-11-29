@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using CarShowroom;
+using CarShowroom.ClassesManagementDatabase;
 
 namespace CarShowroomSystem
 {
@@ -21,6 +22,8 @@ namespace CarShowroomSystem
     /// </summary>
     public partial class Authorization
     {
+        Eventslog eventslog = new Eventslog();
+        static public string login;
         public Authorization()
         {
             InitializeComponent();
@@ -30,16 +33,18 @@ namespace CarShowroomSystem
         {
             try
             {
-                //Manufacturer manufacturer = new Manufacturer();
-                //manufacturer.Add("Volovo");
                 var employee = new Employee();
-                var db = new CarShowroomContext();
-                var user = employee.GetEmployee(TextBox_Login.Text, TextBox_Password.Password);
-                if (employee.GetEmployee(TextBox_Login.Text, TextBox_Password.Password) == null) throw new Exception();
-                
-                var workWindow = new Work(user.Fio, user.Position);
-                workWindow.Show();
-                this.Close();
+                using (var db = new CarShowroomContext())
+                {
+                    var user = employee.GetEmployee(TextBox_Login.Text, TextBox_Password.Password);
+                    if (employee.GetEmployee(TextBox_Login.Text, TextBox_Password.Password) == null) throw new Exception();
+
+                    Work workWindow = new Work(user.Fio,user.Login, user.Position);
+                    login = user.Login;
+                    workWindow.Show();
+                    eventslog.AddEvents(TextBox_Login.Text, "Авторизация", DateTime.Now, "Вход в систему: " + user.Fio);
+                    this.Close();
+                }
             }
             catch (Exception)
             {

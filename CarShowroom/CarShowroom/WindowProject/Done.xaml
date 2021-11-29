@@ -7,15 +7,16 @@
         mc:Ignorable="d"
          Background="{DynamicResource PrimaryHueMidBrush}"
         Title="Выполнено" Height="252" Width="368" WindowStartupLocation="CenterScreen" ResizeMode ="NoResize">
-    <Grid Margin="0,0,0,1">
+    <Grid Margin="0,0,0,1" Background="#FFBFF1E5">
         <Button Content="ОК" 
                 x:Name="button_OK"
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
-                Background="{DynamicResource PrimaryHueDarkBrush}"
-                HorizontalAlignment="Left" Margin="252,167,0,0" VerticalAlignment="Top" 
+                Background="#FF97C4C9"
+                HorizontalAlignment="Left" Margin="253,182,0,0" VerticalAlignment="Top" 
                 Width="92" Cursor="Hand"  Height="27" Click="button_getPrice_Click" Foreground="White" />
+        <Image Source="Images\free.png" Margin="0,49,273,98"/>
         <TextBlock
             x:Name="lblString"
-            Text="" HorizontalAlignment="Left" Margin="64,43,0,0" VerticalAlignment="Top" Height="110" Width="268" Foreground="#DDFFFFFF"/>
+            Text="" HorizontalAlignment="Left" Margin="97,42,0,0" VerticalAlignment="Top" Height="110" Width="261" Foreground="#DD2E485E"/>
     </Grid>
 </Window>

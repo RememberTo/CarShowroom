@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq; 
 #nullable disable
 
 namespace CarShowroom
@@ -15,8 +15,6 @@ namespace CarShowroom
         public int Id { get; set; }
         public int? CustomerId { get; set; }
         public int? EmployeeId { get; set; }
-        public int? PaymentId { get; set; }
-        public DateTime DateBid { get; set; }
         public DateTime DateSale { get; set; }
         public string PayMethod { get; set; }
         public double? InitialDonatMoney { get; set; }
@@ -28,14 +26,14 @@ namespace CarShowroom
         public virtual Employee Employee { get; set; }
         public virtual ICollection<Car> Cars { get; set; }
 
-        public Contract Add(int customerId, int employeeId, int PayId, DateTime Bid,
-            DateTime Sale, string paymethod, double initialmoney, double monthlypay, int countmonth)
+        public Contract Add(int? customerId, int employeeId,
+            DateTime Sale, string paymethod, double initialmoney, double? monthlypay, int? countmonth)
         {
             using (var context = new CarShowroomContext())
             {
-                var eq = new Contract { CustomerId = customerId, 
-                    EmployeeId = employeeId, PaymentId = PayId,
-                    DateBid = Bid, DateSale = Sale, PayMethod = paymethod, 
+                var eq = new Contract { CustomerId = (customerId == -1)? null:customerId, 
+                    EmployeeId = employeeId, 
+                    DateSale = Sale, PayMethod = paymethod, 
                     InitialDonatMoney = initialmoney, MonthlyPay = monthlypay, 
                     CountMonthInstallment = countmonth };
 
@@ -45,6 +43,5 @@ namespace CarShowroom
                 return eq;
             }
         }
-
     }
 }

@@ -22,6 +22,8 @@
     <Grid Margin="0,0,-0.286,0.647" Cursor="IBeam">
         <Grid  HorizontalAlignment="Center" Height="62" Margin="0,771,0,0" VerticalAlignment="Top" Width="1355" Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"/>
 
+
+
         <DataGrid
             Style="{StaticResource MaterialDesignDataGrid}"
             x:Name="GridDatabase" Margin="3,0,284,58"
@@ -31,8 +33,15 @@
             AlternatingRowBackground="{DynamicResource MaterialDesignDataGridRowHoverBackground}" 
             Cursor="Hand" FontSize="14" MouseDoubleClick="GridDatabase_MouseDoubleClick"
             >
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Click="MenuItem_Click_1" Header="Удалить"/>
+                    <Separator/>
+                    <MenuItem Click="MenuItem_Click_2"  Header="Информация"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
-                <materialDesign:DataGridTextColumn Header="VIN" Binding="{Binding Path = _Vin,Mode=OneWay }"  Width="155"/>
+                <materialDesign:DataGridTextColumn Header="VIN" Binding="{Binding Path = _Vin,Mode=OneWay }"  Width="165"/>
                 <materialDesign:DataGridTextColumn Header="Производитель" Binding="{Binding Path =  _manufacturer, Mode=OneWay}" Width="150"/>
                 <DataGridTextColumn Header="Модель" Binding="{Binding Path =  _model, Mode=OneWay}" Width="100"/>
                 <DataGridTextColumn Header="Комплектация" Binding="{Binding Path =  _equipment, Mode=OneWay}" Width="130"/>
@@ -40,10 +49,17 @@
                 <!--<DataGridTextColumn Header="Тип топлива" Binding="{Binding Path =  _fuel, Mode=OneWay}" Width="120"/>-->
                 <DataGridTextColumn Header="Тип привода" Binding="{Binding Path =  _drive, Mode=OneWay}" Width="120"/>
                 <DataGridTextColumn Header="Цвет" Binding="{Binding Path =  _color, Mode=OneWay}" Width="100"/>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Path =  _price, Mode=OneWay}" Width="160"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Path =  _price, Mode=OneWay}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
+        <Button Content="↻" 
+                x:Name="button_Update"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                FontSize="25"         
+                Background="{DynamicResource MaterialDesignToolBackground}"
+                HorizontalAlignment="Left" Margin="1020,0,0,0" VerticalAlignment="Top" 
+                Width="51" Cursor="Hand"  Height="36" Padding="0,-2,0,0" Foreground="{DynamicResource MaterialDesignBody}" Click="button_Update_Click" />
 
 
 
@@ -54,8 +70,8 @@
                 x:Name="button_Search"
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
                 Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
-                HorizontalAlignment="Left" Margin="1223,787,0,0" VerticalAlignment="Top" 
-                Width="110" Cursor="Hand"  Height="34"  />
+                HorizontalAlignment="Left" Margin="1223,788,0,0" 
+                Width="110" Cursor="Hand" Height="32" VerticalAlignment="Top" Click="button_Search_Click"  />
 
         <TextBlock Text="Укажите один или несколько параметров поиска." TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Margin="1086,0,0,0" 
                VerticalAlignment="Center" Height="56" Width="254" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
@@ -100,32 +116,11 @@
 
 
 
-        <Button Content="Добавить Производителя" 
-                x:Name="button_AddManufac"
+        <Button Content="Добавить" 
+                x:Name="button_Add"
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
                 Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
                 HorizontalAlignment="Left" Margin="32,785,0,0" VerticalAlignment="Top" 
-                Width="204" Cursor="Hand"  Height="34"  />
-
-        <Button Content="Добавить Модель" 
-                x:Name="button_AddModel"
-                Style="{StaticResource MaterialDesignFlatDarkButton}"
-                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
-                HorizontalAlignment="Left" Margin="294,785,0,0" VerticalAlignment="Top" 
-                Width="154" Cursor="Hand"  Height="34"  />
-
-        <Button Content="Добавить Комплектацию" 
-                x:Name="button_AddEquipment"
-                Style="{StaticResource MaterialDesignFlatDarkButton}"
-                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
-                HorizontalAlignment="Left" Margin="511,785,0,0" VerticalAlignment="Top" 
-                Width="207" Cursor="Hand"  Height="34"  />
-
-        <Button Content="Добавить Автомобиль" 
-                x:Name="button_AddCar"
-                Style="{StaticResource MaterialDesignFlatDarkButton}"
-                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
-                HorizontalAlignment="Left" Margin="782,785,0,0" VerticalAlignment="Top" 
-                Width="184" Cursor="Hand"  Height="34"  />
+                Width="176" Cursor="Hand"  Height="34" Click="button_Add_Click"  />
     </Grid>
 </Page>

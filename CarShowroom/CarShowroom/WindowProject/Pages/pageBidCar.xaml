@@ -17,33 +17,6 @@
         
         Title="Заявки"  Width="1355" Height="830">
 
-    <Page.Resources>
-        <ContextMenu x:Key="lwMenu" Style="{StaticResource MaterialDesignContextMenu}">
-            <ContextMenu.Items>
-                <MenuItem FontSize="15" Header="Удалить" Click="MenuItem_Click"/>
-            </ContextMenu.Items>
-        </ContextMenu>
-        <Style  x:Key="MyItemContainerStyle" TargetType="{x:Type ListViewItem}">
-            <Setter Property="ContextMenu" Value="{StaticResource lwMenu}" />
-            <Setter Property="FontSize" Value="17"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-
-
-        <ContextMenu x:Key="lMenu" Style="{StaticResource MaterialDesignContextMenu}">
-            <ContextMenu.Items>
-                <MenuItem FontSize="15" Header="Удалить" Click="MenuItem_Click_1"/>
-            </ContextMenu.Items>
-        </ContextMenu>
-        <Style  x:Key="MyItemConStyle" TargetType="{x:Type ListViewItem}">
-            <Setter Property="ContextMenu" Value="{StaticResource lMenu}" />
-            <Setter Property="FontSize" Value="17"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-    </Page.Resources>
-
-
-
     <Grid Margin="0,0,-0.286,0.647">
 
 
@@ -55,8 +28,13 @@
         <Rectangle HorizontalAlignment="Left" Height="673" Margin="714,93,0,0" Stroke="#FF305F6B" VerticalAlignment="Top" Width="631"/>
 
 
-        <ListView ItemContainerStyle="{StaticResource MyItemContainerStyle}" x:Name="listViewCar" Margin="10,95,667,212" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="LeftToRight" Padding="3,0,0,0">
+        <ListView x:Name="listViewCar" Margin="10,95,667,212" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FlowDirection="LeftToRight" Padding="3,0,0,0">
 
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem FontSize="15" Header="Удалить" Click="MenuItem_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="180" Header="Производитель" DisplayMemberBinding="{Binding Manufacturer}"/>
@@ -67,8 +45,14 @@
             </ListView.View>
         </ListView>
 
-        <ListView ItemContainerStyle="{StaticResource MyItemConStyle}" x:Name="listViewAccessory" Margin="717,95,12,209">
+        <ListView x:Name="listViewAccessory" Margin="717,95,12,209">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem FontSize="15" Header="Удалить" Click="MenuItem_Click_1"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.View>
+
                 <GridView>
                     <GridViewColumn Width="130" Header="Тип" DisplayMemberBinding="{Binding Type}"/>
                     <GridViewColumn Width="170" Header="Наименование" DisplayMemberBinding="{Binding Name}"/>
@@ -111,12 +95,17 @@
                 HorizontalAlignment="Left" Margin="914,785,0,0" VerticalAlignment="Top" 
                 Width="171" Cursor="Hand"  Height="34" Click="button_DeleteAccessory_Click"/>
 
-        <Button Content="Сформировать накладную" 
+        <Button 
                 x:Name="button_Word"
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
                 Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
                 HorizontalAlignment="Center" Margin="0,785,0,0" VerticalAlignment="Top" 
-                Width="209" Cursor="Hand"  Height="34" Click="button_Word_Click"/>
+                Width="223" Cursor="Hand"  Height="34" Click="button_Word_Click">
+            <StackPanel Orientation="Horizontal" Width="204">
+                <Image x:Name="imgword" Source="..\Images\word.ico"  Height="23" Width="30" HorizontalAlignment="Left" />
+                <Label  Content="Сформировать заявку" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="180"/>
+            </StackPanel>
+        </Button>
 
 
 

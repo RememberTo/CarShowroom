@@ -230,15 +230,6 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
-      "Microsoft.Office.Interop.Word/15.0.4797.1003": {
-        "type": "package",
-        "compile": {
-          "lib/net20/Microsoft.Office.Interop.Word.dll": {}
-        },
-        "runtime": {
-          "lib/net20/Microsoft.Office.Interop.Word.dll": {}
-        }
-      },
       "Npgsql/5.0.10": {
         "type": "package",
         "dependencies": {
@@ -730,18 +721,6 @@
         "version.txt"
       ]
     },
-    "Microsoft.Office.Interop.Word/15.0.4797.1003": {
-      "sha512": "p22pljmHaQjDxNLqO+uO5vi3y0TK5t1mAtSAg93K28/e12Hw3qzfflAo6XHvNXxnvz9HZGv59vLCwIaC9xbXNQ==",
-      "type": "package",
-      "path": "microsoft.office.interop.word/15.0.4797.1003",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net20/Microsoft.Office.Interop.Word.dll",
-        "microsoft.office.interop.word.15.0.4797.1003.nupkg.sha512",
-        "microsoft.office.interop.word.nuspec"
-      ]
-    },
     "Npgsql/5.0.10": {
       "sha512": "3TB9le3lfu5Hc+LSHqMCVLcA+qUPg1enyM4+u0pMUBmNNGwc0sVPrnfnys2TVZIdkF8Aww/AZlnJHDsnEGqD0g==",
       "type": "package",
@@ -949,7 +928,6 @@
     "net5.0-windows7.0": [
       "MaterialDesignThemes >= 4.2.1",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.12",
-      "Microsoft.Office.Interop.Word >= 15.0.4797.1003",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 5.0.10"
     ]
   },
@@ -1010,10 +988,6 @@
             "target": "Package",
             "version": "[5.0.12, )"
           },
-          "Microsoft.Office.Interop.Word": {
-            "target": "Package",
-            "version": "[15.0.4797.1003, )"
-          },
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[5.0.10, )"
@@ -1040,17 +1014,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Пакет \"Microsoft.Office.Interop.Word 15.0.4797.1003\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
-      "libraryId": "Microsoft.Office.Interop.Word",
-      "targetGraphs": [
-        "net5.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }

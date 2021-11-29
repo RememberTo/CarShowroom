@@ -1,4 +1,6 @@
-﻿using CarShowroomSystem.Window.Pages;
+﻿using CarShowroom.ClassesManagementDatabase;
+using CarShowroom.WindowProject.Pages;
+using CarShowroomSystem.Window.Pages;
 using CarShowroomSystem.WindowProject.Pages;
 using System;
 using System.Collections.Generic;
@@ -20,33 +22,63 @@ namespace CarShowroomSystem.Window
     /// </summary>
     public partial class Work
     {
-        static pageCar car = new pageCar();
-        static pageAccessory aces = new pageAccessory();
-        static pageBidCar bid = new pageBidCar();
-        static pageContract con = new pageContract();
-        public Work(string Fio, string pos)
+        pageCar car;
+        pageAccessory aces;
+        pageBidCar bid;
+        pageContract con;
+        Account account;
+        pageEventslog pageEventslog;
+        Eventslog eventsLog = new Eventslog();
+        public string log { get; set; }
+        public Work(string Fio, string login, string pos)
         {
+            try
+            {
 
-            InitializeComponent();
-            TickTimer();
-            if (Fio == null && pos == null)
-                label_fiouser.Text = "Фролов Кирилл Дмитриевич" + "\nДолжность: " + "Менеджер";
-            else { label_fiouser.Text = Fio + "\nДолжность: " + pos; }
+                InitializeComponent();
+                car = new pageCar(login);
+                aces = new pageAccessory(login);
+                bid = new pageBidCar(login);
+                con = new pageContract(login);
+                account = new Account(login);
+                log = login;
+                pageEventslog = new pageEventslog(login);
+
+                ButtonEvent.Visibility = Visibility.Hidden;
+                TickTimer();
+               if (Fio == null && pos == null)
+                    label_fiouser.Text = "Фролов Кирилл Дмитриевич" + "\nДолжность: " + "Менеджер";
+               else { label_fiouser.Text = Fio + "\nДолжность: " + pos; }
+                
+            }
+            catch (Exception)
+            {
+                this.Close();
+                Application.Current.Shutdown();
+            }
         }
-        public Work()
+        //public Work()
+        //{
+        //    try
+        //    {
+        //        InitializeComponent();
+        //        TickTimer();
+        //        log = "test";
+        //        label_fiouser.Text = "Фролов Кирилл Дмитриевич" + "\nДолжность: " + "Менеджер";
+        //    }
+        //    catch (Exception)
+        //    {
+        //        this.Close();
+        //        Application.Current.Shutdown();
+        //    }  
+        //}
+        public void ControlButton(bool care, bool acces, bool contract, bool bidCar, bool even)
         {
-            InitializeComponent();
-            //TickTimer();
-            label_fiouser.Text = "Фролов Кирилл Дмитриевич" + "\nДолжность: " + "Менеджер";
-
-
-        }
-        public void ControlButton (bool car, bool acces, bool contract, bool bidCar)
-        {
-            ButtonCar.IsEnabled = car;
+            ButtonCar.IsEnabled = care;
             ButtonAccessory.IsEnabled = acces;
             ButtonContract.IsEnabled = contract;
             ButtonBidCar.IsEnabled = bidCar;
+            ButtonEvent.IsEnabled = even;
         }
         private void TickTimer()
         {
@@ -61,6 +93,8 @@ namespace CarShowroomSystem.Window
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            eventsLog.AddEvents(log, "Выход", DateTime.Now, "Выход из системы");
+            Application.Current.Shutdown();
         }
 
         private void ButtonMinimaized_Click(object sender, RoutedEventArgs e)
@@ -71,26 +105,33 @@ namespace CarShowroomSystem.Window
         private void ButtonCar_Click(object sender, RoutedEventArgs e)
         {
             WorkTableFrame.Navigate(car);
-            ControlButton(false, true, true, true);
+            ControlButton(false, true, true, true, true);
         }
 
         private void ButtonAccessory_Click(object sender, RoutedEventArgs e)
         {
             WorkTableFrame.Navigate(aces);
             //WorkTableFrame.Content = new pageAccessory();
-            ControlButton(true, false, true, true);
+            ControlButton(true, false, true, true, true);
         }
 
         private void ButtonBidCar_Click(object sender, RoutedEventArgs e)
         {
             WorkTableFrame.Navigate(bid);
-            ControlButton(true, true, true, false);
+            ControlButton(true, true, true, false, true);
         }
 
-        private void ButtoContract_Click(object sender, RoutedEventArgs e)
+        private void ButtonContract_Click(object sender, RoutedEventArgs e)
         {
-            ControlButton(true, true, false, true);
-            WorkTableFrame.Navigate(con);
+            ControlButton(true, true, false, true, true);
+            //WorkTableFrame.Navigate(con);
+            WorkTableFrame.Content = con;
+        }
+
+        private void ButtonEvent_Click(object sender, RoutedEventArgs e)
+        {
+            ControlButton(true, true, true, true, false);
+            WorkTableFrame.Navigate(pageEventslog);
         }
         #endregion
 
@@ -104,6 +145,18 @@ namespace CarShowroomSystem.Window
         {
             var brush = new SolidColorBrush(Colors.Black);
             ButtonClose.Foreground = brush;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WorkTableFrame.Navigate(account);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            eventsLog.AddEvents(log, "Выход", DateTime.Now, "Выход из системы");
+            Application.Current.Shutdown();
         }
     }
 }

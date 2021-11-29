@@ -47,10 +47,11 @@
 
         <Label Content="Количество месяцев кредита:" FontSize="16" HorizontalAlignment="Left" Margin="370,19,0,0" VerticalAlignment="Top" Height="30" Width="242" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
         <ComboBox
+            IsTextSearchEnabled="True" TextSearch.TextPath="PropertyName"
             x:Name="comboBoxMonth"
             FontSize="16"
             HorizontalAlignment="Left" Margin="370,49,0,0" 
-            VerticalAlignment="Top" Width="242" BorderThickness="1,1,1.5,1" Padding="1,4,5,4" Height="36" Foreground="{DynamicResource MaterialDesignBody}" SelectionChanged="comboBoxPay_SelectionChanged" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch">
+            VerticalAlignment="Top" Width="242" BorderThickness="1,1,1.5,1" Padding="1,4,5,4" Height="36" Foreground="{DynamicResource MaterialDesignBody}" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" SelectionChanged="comboBoxMonth_SelectionChanged">
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock><Run Text="6 месяцев"/></TextBlock>
@@ -65,7 +66,7 @@
                 <TextBlock><Run Text="24 месяца"/></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock><Run Text="30 месяца"/></TextBlock>
+                <TextBlock><Run Text="30 месяцев"/></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock><Run Text="36 месяцев"/></TextBlock>
@@ -79,7 +80,7 @@
             Foreground="{DynamicResource MaterialDesignBody}"
             HorizontalAlignment="Left"  FontSize="19"
             Margin="678,49,0,0" Text="" TextWrapping="Wrap" 
-            VerticalAlignment="Top" Width="242"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" PreviewTextInput="TextBoxInitialPay_PreviewTextInput"/>
+            VerticalAlignment="Top" Width="242"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" PreviewTextInput="TextBoxInitialPay_PreviewTextInput" TextChanged="TextBoxInitialPay_TextChanged"/>
 
         <Label Content="Процентная ставка:" FontSize="16" HorizontalAlignment="Left" Margin="57,125,0,0" VerticalAlignment="Top" Height="35" Width="161" Foreground="{DynamicResource PrimaryHueDarkBrush}"/>
         <TextBox 
@@ -89,7 +90,7 @@
             Foreground="{DynamicResource MaterialDesignBody}"
             HorizontalAlignment="Left" FontSize="19"
             Margin="213,122,0,0" Text="7,5" TextWrapping="Wrap" 
-            VerticalAlignment="Top" Width="90" BorderThickness="0,0,0,1" Height="28" Cursor="IBeam" Padding="5,5,18,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" UseLayoutRounding="True"/>
+            VerticalAlignment="Top" Width="90" BorderThickness="0,0,0,1" Height="28" Cursor="IBeam" Padding="5,5,18,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" UseLayoutRounding="True" TextChanged="TextBoxStavka_TextChanged"/>
         <Label Foreground="{DynamicResource MaterialDesignBody}" Content="%" FontSize="19" HorizontalAlignment="Left" Margin="281,123,0,0" VerticalAlignment="Top" Height="28" Width="22" RenderTransformOrigin="-0.287,0.519"  VerticalContentAlignment="Top" HorizontalContentAlignment="Center"/>
 
 
@@ -112,7 +113,7 @@
             Foreground="{DynamicResource MaterialDesignBody}"
             HorizontalAlignment="Left"  FontSize="19"
             Margin="1091,86,0,0" Text="" TextWrapping="Wrap" 
-            VerticalAlignment="Top" Width="242"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" PreviewTextInput="TextBoxInitialPay_PreviewTextInput" FlowDirection="RightToLeft"/>
+            VerticalAlignment="Top" Width="242"  BorderThickness="1,1,1,1" Height="36" Cursor="IBeam" Padding="0,-4,0,4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
 
         <TextBox 
             MaxLength="10"
@@ -144,12 +145,18 @@
                 HorizontalAlignment="Left" Margin="292,785,0,0" VerticalAlignment="Top" 
                 Width="120" Cursor="Hand"  Height="34" Click="button_Remove_Click" />
 
-        <Button Content="Сформировать контракт" 
+        <Button 
                 x:Name="button_Contract"
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
                 Background="{DynamicResource MaterialDesignFlatButtonRipple}"
                 HorizontalAlignment="Left" Margin="645,785,0,0" VerticalAlignment="Top" 
-                Width="228" Cursor="Hand"  Height="34" Click="button_Contract_Click"/>
+                Width="236" Cursor="Hand"  Height="34" Click="button_Contract_Click">
+
+            <StackPanel Orientation="Horizontal" Width="204">
+                <Image Source="..\Images\word.ico" Height="23" Width="30" HorizontalAlignment="Left" />
+                <Label  Content="Сформировать контракт" Foreground="{DynamicResource PrimaryHueDarkBrush}" Width="180"/>
+            </StackPanel>
+        </Button>
         <ListView x:Name="listViewProduct" Margin="56,315,945,153" RenderTransformOrigin="0.5,0.5">
             <ListView.RenderTransform>
                 <TransformGroup>
@@ -161,7 +168,7 @@
             </ListView.RenderTransform>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn   Width="180" Header="Товар" DisplayMemberBinding="{Binding ManufacModelEquip}"/>
+                    <GridViewColumn Width="180" Header="Товар" DisplayMemberBinding="{Binding ManufacModelEquip}"/>
                     <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
                 </GridView>
             </ListView.View>
@@ -173,6 +180,13 @@
             SelectionMode="Single"
                   
                   Margin="442,313,280,80" Background="{DynamicResource MaterialDesignToolBackground}" MouseDoubleClick="DataGridSelCar_MouseDoubleClick" >
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Click="MenuItem_Click" Header="Добавить"/>
+                    <MenuItem Click="MenuItem_Click_1" Header="Информация"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn Header="VIN" Binding="{Binding Path = _Vin,Mode=OneWay }"  Width="160"/>
                 <materialDesign:DataGridTextColumn Header="Производитель" Binding="{Binding Path =  _manufacturer, Mode=OneWay}" Width="140"/>
@@ -255,12 +269,21 @@
         <Rectangle HorizontalAlignment="Left" Height="34" Margin="1223,170,0,0" Stroke="{DynamicResource MaterialDesignToolTipBackground}" VerticalAlignment="Top" Width="1"/>
 
 
-        <Button Content="Расчитать кредит" 
+        <Button Content="Расчитать платеж" 
                 x:Name="button_Credit"
                 Style="{StaticResource MaterialDesignFlatDarkButton}"
                 Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
                 HorizontalAlignment="Left" Margin="64,197,0,0" VerticalAlignment="Top" 
                 Width="154" Cursor="Hand"  Height="34" Click="button_Credit_Click" />
+
+
+        <Button Content="↻" 
+                x:Name="button_Update"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                FontSize="25"         
+                Background="{DynamicResource MaterialDesignToolBackground}"
+                HorizontalAlignment="Left" Margin="1036,316,0,0" VerticalAlignment="Top" 
+                Width="37" Cursor="Hand"  Height="32" Padding="0,-2,0,0" Foreground="{DynamicResource MaterialDesignBody}" Click="button_Update_Click" />
 
     </Grid>
 </Page>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 #nullable disable
 
@@ -29,6 +30,25 @@ namespace CarShowroom
                 return car;
             }
 
+        }
+
+        public Manufacturer GetSoId(int id)
+        {
+            using (var context = new CarShowroomContext())
+            {
+                var query = context.Manufacturers.FirstOrDefault(x => x.Id == id);
+
+                return query;
+            }
+        }
+        public Manufacturer GetSoCarbrand(string car)
+        {
+            using (var context = new CarShowroomContext())
+            {
+                var query = context.Manufacturers.FirstOrDefault(x => x.Carbrand == car);
+
+                return query;
+            }
         }
 
     }

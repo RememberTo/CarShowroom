@@ -1,7 +1,9 @@
 ﻿using CarShowroom;
+using CarShowroom.ClassesManagementDatabase;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,6 +20,7 @@ namespace CarShowroomSystem.Window
     /// </summary>
     public partial class Registration
     {
+        Eventslog eventslog = new Eventslog();
         public Registration()
         {
             InitializeComponent();
@@ -34,15 +37,34 @@ namespace CarShowroomSystem.Window
             {
                 var employee = new Employee();
 
-                if (TextBox_Password.Password != TextBox_RePassword.Password) MessageBox.Show("Пароли не совпадают");
+                if (TextBox_Password.Password != TextBox_RePassword.Password)
 
+                {
+                    MessageBox.Show("Пароли не совпадают");
+                    return;
+                }
+                if (TextBox_FIO.Text == string.Empty || 
+                    TextBox_Login.Text == string.Empty || 
+                    TextBox_Position.Text == string.Empty || 
+                    TextBox_Depart.Text == string.Empty ||
+                    TextBox_Password.Password == string.Empty
+                    )
+                {
+                    MessageBox.Show("Заполните поля с ФИО, Логин, Отдел, Должность и пароль");
+                    return;
+                }
                 if (employee.GetEmployee(TextBox_Login.Text,TextBox_Password.Password) != null) throw new ArgumentException();
+                if (employee.GetEmployee(TextBox_Login.Text, null) != null) throw new InvalidOperationException();
+                employee.Add(TextBox_FIO.Text, TextBox_Depart.Text, TextBox_Position.Text,
+                                 TextBox_Phone.Text, TextBox_Login.Text, TextBox_Password.Password);
 
-                employee.Add(TextBox_FIO.Text, TextBox_Depart.Text, TextBox_Position.Text, 
-                             TextBox_Phone.Text, TextBox_Password.Password, TextBox_Login.Text);
-
+                eventslog.AddEvents(null, "Регистрация", DateTime.Now, "Регистрация нового пользователя: " + TextBox_FIO.Text + " Логин: "+TextBox_Login.Text );
                 MessageBox.Show("Вы успешно зарегестрировались");
                 this.Close();
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Пользователь с данным логином уже существует");
             }
             catch(ArgumentException)
             {
@@ -52,6 +74,12 @@ namespace CarShowroomSystem.Window
             {
                 MessageBox.Show("Возникла ошибка");
             }
+        }
+
+        private void TextBox_Phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

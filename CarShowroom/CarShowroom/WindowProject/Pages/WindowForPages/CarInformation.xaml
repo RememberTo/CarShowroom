@@ -16,12 +16,88 @@
          TextOptions.TextFormattingMode="Ideal"
          TextOptions.TextRenderingMode="Auto"
          FontFamily="{DynamicResource MaterialDesignFont}"
-         Background="{DynamicResource MaterialDesignSelection}"
+         Background="{DynamicResource MaterialDesignToolBarBackground}"
         
-        Title="Автомобиль" Height="341" Width="503" WindowStartupLocation="CenterScreen" ResizeMode ="NoResize">
-    <Grid Margin="0,0,0,0">
-        
-        
+        Title="Автомобиль" Height="506" Width="666" WindowStartupLocation="CenterScreen" ResizeMode ="NoResize" WindowStyle="None" MouseDown="Window_MouseDown">
+    <Grid>
+        <Rectangle HorizontalAlignment="Center" Height="506" Stroke="Black" VerticalAlignment="Center" Width="666"/>
+        <Label x:Name="TextBlock_Name" FontSize="25" HorizontalAlignment="Center" Margin="0,10,0,0" Content="sdasd"  VerticalAlignment="Top" Width="494" Height="35" Foreground="{DynamicResource PrimaryHueDarkBrush}" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Image x:Name="img" HorizontalAlignment="Left"  Height="243" Margin="21,65,0,0" VerticalAlignment="Top" Width="363"/>
+
+        <Button x:Name="ButtonClose" 
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Content="×" HorizontalAlignment="Left" FontSize="27" Margin="640,-6,0,0" 
+                VerticalAlignment="Top" Width="26"  RenderTransformOrigin="-0.06,0.72" 
+                Height="27" Click="ButtonClose_Click" Cursor="Hand" Foreground="{DynamicResource MaterialDesignBody}" BorderBrush="#FFBD3F3F" MouseEnter="ButtonClose_MouseEnter" MouseLeave="ButtonClose_MouseLeave" Padding="0,0,0,0" />
+        <Label x:Name="labelImg"  Content="Изображение" HorizontalAlignment="Left" Margin="26,65,0,0" VerticalAlignment="Top" Height="238" Width="352" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{DynamicResource MaterialDesignTextAreaInactiveBorder}"/>
+        <Button x:Name="ButtonSourceImage" 
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Content="..." HorizontalAlignment="Left" FontSize="20" Margin="26,308,0,0" 
+                VerticalAlignment="Top" Width="31"  RenderTransformOrigin="-0.06,0.72" 
+                Height="16" Cursor="Hand" Foreground="{DynamicResource MaterialDesignBody}"  Padding="0,-11,0,0" Click="ButtonSourceImage_Click" />
+        <TextBox FontSize="17"
+                 MaxLength="17"
+                 materialDesign:HintAssist.Hint="VIN" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 x:Name="TextBlock_Vin" HorizontalAlignment="Left" Margin="419,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Foreground="{DynamicResource MaterialDesignColumnHeader}" Height="41" Cursor="IBeam" BorderThickness="0,0,0,0" IsEnabled="False" />
+        <TextBox FontSize="17" x:Name="TextBlock_Fuel"
+                 materialDesign:HintAssist.Hint="Топливо" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 HorizontalAlignment="Left" Margin="419,150,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Foreground="{DynamicResource MaterialDesignColumnHeader}" BorderThickness="0,0,0,0" Height="41" RenderTransformOrigin="0.504,0.577" IsEnabled="False"/>
+        <TextBox FontSize="17"  x:Name="TextBlock_Drive" 
+                 materialDesign:HintAssist.Hint="Тип привода" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 HorizontalAlignment="Left" Margin="419,109,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Foreground="{DynamicResource MaterialDesignColumnHeader}"  Height="41" IsEnabled="False" BorderThickness="0,0,0,0"/>
+
+        <DatePicker FontSize="17" x:Name="TextBlock_Date"
+                    materialDesign:HintAssist.Hint="Дата выпуска" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                    HorizontalAlignment="Left" Margin="419,191,0,0" Text="Дата выпуска: " VerticalAlignment="Top" Width="234" Foreground="{DynamicResource MaterialDesignColumnHeader}" BorderThickness="1,3,1,1" Height="43" IsEnabled="False" Padding="0,2,0,4"/>
+        <TextBox FontSize="17" x:Name="TextBlock_Color" 
+                 materialDesign:HintAssist.Hint="Цвет" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 HorizontalAlignment="Left" Margin="419,232,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="235" Foreground="{DynamicResource MaterialDesignColumnHeader}" BorderThickness="0,0,0,0" Height="41" IsEnabled="False"/>
+        <TextBox FontSize="17" x:Name="TextBlock_Price" 
+                  materialDesign:HintAssist.Hint="Цена" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 HorizontalAlignment="Left" Margin="419,273,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="234" Foreground="{DynamicResource MaterialDesignColumnHeader}" BorderThickness="0,0,0,0" Height="41" IsEnabled="False" PreviewTextInput="TextBlock_Price_PreviewTextInput"/>
+        <TextBox FontSize="17" x:Name="TextBlock_Mileage" 
+                  materialDesign:HintAssist.Hint="Пробег"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 HorizontalAlignment="Left" Margin="416,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Foreground="{DynamicResource MaterialDesignColumnHeader}" BorderThickness="0,0,0,0" Height="41" IsEnabled="False" PreviewTextInput="TextBlock_Mileage_PreviewTextInput" Cursor="IBeam"/>
+
+        <Button Content="Изменить" 
+                x:Name="button_Edit"
+                Style="{StaticResource MaterialDesignFlatDarkButton}"
+                Background="{DynamicResource MaterialDesignDarkSeparatorBackground}"
+                HorizontalAlignment="Left" Margin="483,462,0,0" VerticalAlignment="Top" 
+                Width="173" Cursor="Hand"  Height="34" RenderTransformOrigin="0.29,0.558" Click="button_Edit_Click"  />
+
+        <Label  FontSize="17" HorizontalAlignment="Left" Margin="21,314,0,0" Content="Аксессуары"  VerticalAlignment="Top" Width="393" Height="35" Foreground="{DynamicResource MaterialDesignColumnHeader}" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontStyle="Normal"/>
+
+        <ListView FontSize="12" x:Name="listViewAcess" Margin="26,346,249,13" RenderTransformOrigin="0.5,0.5" Padding="0,0,0,0" UseLayoutRounding="False" MinHeight="45">
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.041"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.134"/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить акксессуар для автомобиля" Click="MenuItem_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="Тип" DisplayMemberBinding="{Binding _type}"/>
+                    <GridViewColumn Width="160" Header="Наименование" DisplayMemberBinding="{Binding _name}"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding _price}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <DatePicker HorizontalAlignment="Left" Margin="742,224,0,0" VerticalAlignment="Top"/>
+        <Rectangle HorizontalAlignment="Left" Height="5" Margin="416,231,0,0" Stroke="{DynamicResource MaterialDesignToolBarBackground}" VerticalAlignment="Top" Width="244" Fill="{DynamicResource MaterialDesignToolBarBackground}"/>
+
+        <Label FontSize="17" x:Name="label_suc" Content="Изменения внесены!" HorizontalAlignment="Left" Margin="420,357,0,0" VerticalAlignment="Top" Width="236" Foreground="#DD0F57D4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Visibility="Visible"/>
+
     </Grid>
-        
+
 </Window>
