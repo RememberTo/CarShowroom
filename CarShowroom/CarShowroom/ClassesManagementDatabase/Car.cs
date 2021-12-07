@@ -40,15 +40,7 @@ namespace CarShowroom
             }
         }
 
-        public Car Get(string vin)
-        {
-            using (var context = new CarShowroomContext())
-            {
-                var query = context.Cars.FirstOrDefault(x => x.Vin == vin);
-
-                return query;
-            }
-        }
+       
         public Car FullEdit(string vin, string color, string mileage, DateTime date, int price,string editVin)
         {
             using (var db = new CarShowroomContext())
@@ -82,6 +74,16 @@ namespace CarShowroom
                     db.SaveChanges();
                 }
                 return car;
+            }
+        }
+
+        public Car Get(string vin)
+        {
+            using (var context = new CarShowroomContext())
+            {
+                var query = context.Cars.FirstOrDefault(x => x.Vin == vin);
+
+                return query;
             }
         }
 
